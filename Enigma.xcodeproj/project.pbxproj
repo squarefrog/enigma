@@ -11,7 +11,7 @@
 		0E265F511CCFCE7D002E3788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E265F501CCFCE7D002E3788 /* Assets.xcassets */; };
 		0E265F541CCFCE7D002E3788 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E265F521CCFCE7D002E3788 /* LaunchScreen.storyboard */; };
 		0E35FB851CCFD0D7001B10E0 /* Plugboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35FB841CCFD0D7001B10E0 /* Plugboard.swift */; };
-		0E35FB891CCFD128001B10E0 /* Plugboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35FB881CCFD128001B10E0 /* Plugboard.swift */; };
+		0E35FB891CCFD128001B10E0 /* PlugboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35FB881CCFD128001B10E0 /* PlugboardTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +33,7 @@
 		0E265F5A1CCFCE7D002E3788 /* EnigmaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnigmaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E265F601CCFCE7D002E3788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E35FB841CCFD0D7001B10E0 /* Plugboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plugboard.swift; sourceTree = "<group>"; };
-		0E35FB881CCFD128001B10E0 /* Plugboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plugboard.swift; sourceTree = "<group>"; };
+		0E35FB881CCFD128001B10E0 /* PlugboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlugboardTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +96,7 @@
 		0E35FB861CCFD0EC001B10E0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0E35FB881CCFD128001B10E0 /* Plugboard.swift */,
+				0E35FB881CCFD128001B10E0 /* PlugboardTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -219,7 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E35FB891CCFD128001B10E0 /* Plugboard.swift in Sources */,
+				0E35FB891CCFD128001B10E0 /* PlugboardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +365,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.squarefrog.EnigmaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "EnigmaTests/Models/EnigmaTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Enigma.app/Enigma";
 			};
@@ -380,7 +379,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.squarefrog.EnigmaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "EnigmaTests/Models/EnigmaTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Enigma.app/Enigma";
 			};
 			name = Release;
