@@ -48,6 +48,12 @@ struct Plugboard {
         connections.append(connection)
     }
 
+    mutating func destroyConnection(connection: Connection) {
+        if let index = connections.indexOf({ $0 == connection }) {
+            connections.removeAtIndex(index)
+        }
+    }
+
     // MARK: - Private API
 
     private func transformCharacter(character: Character,

@@ -70,4 +70,13 @@ class PlugboardTests: XCTestCase {
         }
     }
 
+    func test_ShouldAllowDestroyingConnection() {
+        let connection = Connection(startPoint: "A", endPoint: "B")
+        try! plugboard.createConnection(connection)
+        XCTAssertEqual(plugboard.passthrough("A"), "B")
+
+        plugboard.destroyConnection(connection)
+
+        XCTAssertEqual("A", "A")
+    }
 }
