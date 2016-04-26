@@ -13,6 +13,7 @@ enum PlugboardError: ErrorType {
      *  The plugboard has a maximum of 10 connections.
      */
     case OutOfConnections
+    case InvalidConnection
 }
 
 /**
@@ -28,11 +29,7 @@ struct Plugboard {
      - returns: The output alpha code, transformed if necessary.
      */
     func passthrough(input: Character) -> Character {
-        let filteredConnections = connections.filter { (c) -> Bool in
-            return c.startPoint == input || c.endPoint == input
-        }
-
-        if let connection = filteredConnections.first {
+        if let connection = connectionForCharacter(input) {
             return transformCharacter(input, connection: connection)
         }
 
@@ -45,9 +42,15 @@ struct Plugboard {
      - throws: A PlugboardError if connection cannot be made
      */
     mutating func createConnection(connection: Connection) throws {
-        if connections.count >= 10 {
+        guard connections.count < 10 else {
             throw PlugboardError.OutOfConnections
         }
+
+        guard connectionForCharacter(connection.startPoint) == nil &&
+            connectionForCharacter(connection.endPoint) == nil else {
+                throw PlugboardError.InvalidConnection
+        }
+
         connections.append(connection)
     }
 
@@ -64,5 +67,17 @@ struct Plugboard {
         }
 
         return character
+    }
+
+    private func connectionForCharacter(character: Character) -> Connection? {
+        let filteredConnections = connections.filter { (c) -> Bool in
+            return c.startPoint == character || c.endPoint == character
+        }
+
+        if let connection = filteredConnections.first {
+            return connection
+        }
+
+        return nil
     }
 }

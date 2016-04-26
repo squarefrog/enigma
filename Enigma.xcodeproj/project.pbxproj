@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E13E3441CCFFA71004CEEC3 /* XCTAssertThrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E13E3431CCFFA71004CEEC3 /* XCTAssertThrows.swift */; };
 		0E265F4A1CCFCE7D002E3788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E265F491CCFCE7D002E3788 /* AppDelegate.swift */; };
 		0E265F511CCFCE7D002E3788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E265F501CCFCE7D002E3788 /* Assets.xcassets */; };
 		0E265F541CCFCE7D002E3788 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E265F521CCFCE7D002E3788 /* LaunchScreen.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E13E3431CCFFA71004CEEC3 /* XCTAssertThrows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTAssertThrows.swift; sourceTree = "<group>"; };
 		0E265F461CCFCE7D002E3788 /* Enigma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enigma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E265F491CCFCE7D002E3788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E265F501CCFCE7D002E3788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +56,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E13E3421CCFFA20004CEEC3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0E13E3431CCFFA71004CEEC3 /* XCTAssertThrows.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		0E265F3D1CCFCE7D002E3788 = {
 			isa = PBXGroup;
 			children = (
@@ -87,8 +97,9 @@
 		0E265F5D1CCFCE7D002E3788 /* EnigmaTests */ = {
 			isa = PBXGroup;
 			children = (
-				0E35FB861CCFD0EC001B10E0 /* Models */,
+				0E13E3421CCFFA20004CEEC3 /* Helpers */,
 				0E265F601CCFCE7D002E3788 /* Info.plist */,
+				0E35FB861CCFD0EC001B10E0 /* Models */,
 			);
 			path = EnigmaTests;
 			sourceTree = "<group>";
@@ -219,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E13E3441CCFFA71004CEEC3 /* XCTAssertThrows.swift in Sources */,
 				0E35FB891CCFD128001B10E0 /* PlugboardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
