@@ -8,6 +8,13 @@ struct Connection {
     let endPoint: Character
 }
 
+enum PlugboardError: ErrorType {
+    /**
+     *  The plugboard has a maximum of 10 connections.
+     */
+    case OutOfConnections
+}
+
 /**
  * A representation of the plugboard or *Steckerbrett*.
  */
@@ -35,8 +42,12 @@ struct Plugboard {
     /**
      Create a connection between a pair of letters.
      - parameter connection: The connection to create.
+     - throws: A PlugboardError if connection cannot be made
      */
-    mutating func createConnection(connection: Connection) {
+    mutating func createConnection(connection: Connection) throws {
+        if connections.count >= 10 {
+            throw PlugboardError.OutOfConnections
+        }
         connections.append(connection)
     }
 
