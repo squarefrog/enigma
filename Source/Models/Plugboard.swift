@@ -1,12 +1,6 @@
 import Foundation
 
-/**
- *  A representation of two characters connected together.
- */
-struct Connection {
-    let startPoint: Character
-    let endPoint: Character
-}
+// MARK: - Plugboard
 
 enum PlugboardError: ErrorType {
     /**
