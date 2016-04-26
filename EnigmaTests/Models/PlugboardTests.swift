@@ -15,4 +15,22 @@ class PlugboardTests: XCTestCase {
 
         XCTAssertEqual(input, output)
     }
+
+    func test_ShouldUseAConnection() {
+        let connection = Connection(startPoint: "A", endPoint: "U")
+        plugboard.createConnection(connection)
+
+        let output = plugboard.passthrough("A")
+
+        XCTAssertEqual(output, "U")
+    }
+
+    func test_ShouldUseConnectionInReverse() {
+        let connection = Connection(startPoint: "A", endPoint: "U")
+        plugboard.createConnection(connection)
+
+        let output = plugboard.passthrough("U")
+
+        XCTAssertEqual(output, "A")
+    }
 }
