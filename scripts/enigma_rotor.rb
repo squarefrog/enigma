@@ -42,7 +42,9 @@ end.parse!
 def verify_input(options)
   verify_mapping(options[:mapping])
   verify_rotor_name(options[:name])
-  verify_turnover_notch(options[:turnover])
+  unless options[:turnover] == nil
+    verify_turnover_notch(options[:turnover])
+  end
 end
 
 def verify_mapping(mapping)
@@ -66,12 +68,8 @@ def verify_rotor_name(name)
 end
 
 def verify_turnover_notch(notch)
-  if notch == nil
-    raise "Turnover notch character should be supplied"
-  end
-
-  unless notch.length == 1 || notch.length == 2
-    raise "Turnover notch should be a single character or double characters for rotors VI, VII, and VIII"
+  unless notch.length < 3
+    raise "Turnover notch should be a blank for reflectors, a single character for rotors I–V or double characters for rotors VI–VIII"
   end
 
   unless notch[/[a-zA-Z]+/]
@@ -100,12 +98,16 @@ def create_mapping(options)
   verify_input(options)
   rotor_name = options[:name]
   mapping = parse_mapping(options)
-  turnover_numbers = turnover_number(options[:turnover])
   mapping_hash = {
     "rotor_name" => rotor_name,
-    "mapping" => mapping,
-    "turnover" => turnover_numbers
+    "mapping" => mapping
   }
+
+  unless options[:turnover] == nil
+    mapping_hash["turnover"] = turnover_number(options[:turnover])
+  end
+
+  mapping_hash
 end
 
 puts create_mapping(options).to_json
