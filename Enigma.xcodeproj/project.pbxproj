@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E13E3441CCFFA71004CEEC3 /* XCTAssertThrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E13E3431CCFFA71004CEEC3 /* XCTAssertThrows.swift */; };
+		0E13E3461CD00155004CEEC3 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E13E3451CD00155004CEEC3 /* Connection.swift */; };
 		0E265F4A1CCFCE7D002E3788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E265F491CCFCE7D002E3788 /* AppDelegate.swift */; };
 		0E265F511CCFCE7D002E3788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E265F501CCFCE7D002E3788 /* Assets.xcassets */; };
 		0E265F541CCFCE7D002E3788 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E265F521CCFCE7D002E3788 /* LaunchScreen.storyboard */; };
+		0E35FB851CCFD0D7001B10E0 /* Plugboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35FB841CCFD0D7001B10E0 /* Plugboard.swift */; };
+		0E35FB891CCFD128001B10E0 /* PlugboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35FB881CCFD128001B10E0 /* PlugboardTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E13E3431CCFFA71004CEEC3 /* XCTAssertThrows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTAssertThrows.swift; sourceTree = "<group>"; };
+		0E13E3451CD00155004CEEC3 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		0E265F461CCFCE7D002E3788 /* Enigma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enigma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E265F491CCFCE7D002E3788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E265F501CCFCE7D002E3788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -30,6 +36,8 @@
 		0E265F551CCFCE7D002E3788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E265F5A1CCFCE7D002E3788 /* EnigmaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnigmaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E265F601CCFCE7D002E3788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E35FB841CCFD0D7001B10E0 /* Plugboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plugboard.swift; sourceTree = "<group>"; };
+		0E35FB881CCFD128001B10E0 /* PlugboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlugboardTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E13E3421CCFFA20004CEEC3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0E13E3431CCFFA71004CEEC3 /* XCTAssertThrows.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		0E265F3D1CCFCE7D002E3788 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +87,7 @@
 		0E265F481CCFCE7D002E3788 /* Enigma */ = {
 			isa = PBXGroup;
 			children = (
+				0E5F575B1CCFD0A100381BAE /* Models */,
 				0E265F491CCFCE7D002E3788 /* AppDelegate.swift */,
 				0E265F501CCFCE7D002E3788 /* Assets.xcassets */,
 				0E265F521CCFCE7D002E3788 /* LaunchScreen.storyboard */,
@@ -82,9 +99,29 @@
 		0E265F5D1CCFCE7D002E3788 /* EnigmaTests */ = {
 			isa = PBXGroup;
 			children = (
+				0E13E3421CCFFA20004CEEC3 /* Helpers */,
 				0E265F601CCFCE7D002E3788 /* Info.plist */,
+				0E35FB861CCFD0EC001B10E0 /* Models */,
 			);
 			path = EnigmaTests;
+			sourceTree = "<group>";
+		};
+		0E35FB861CCFD0EC001B10E0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0E35FB881CCFD128001B10E0 /* PlugboardTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0E5F575B1CCFD0A100381BAE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0E13E3451CD00155004CEEC3 /* Connection.swift */,
+				0E35FB841CCFD0D7001B10E0 /* Plugboard.swift */,
+			);
+			name = Models;
+			path = ../Source/Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +224,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E35FB851CCFD0D7001B10E0 /* Plugboard.swift in Sources */,
+				0E13E3461CD00155004CEEC3 /* Connection.swift in Sources */,
 				0E265F4A1CCFCE7D002E3788 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +234,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E13E3441CCFFA71004CEEC3 /* XCTAssertThrows.swift in Sources */,
+				0E35FB891CCFD128001B10E0 /* PlugboardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,10 +376,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = EnigmaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.squarefrog.EnigmaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Enigma.app/Enigma";
 			};
 			name = Debug;
@@ -347,6 +390,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = EnigmaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.squarefrog.EnigmaTests;
