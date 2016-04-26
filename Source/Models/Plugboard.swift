@@ -10,7 +10,7 @@ struct Plugboard {
      - parameter input: The input alpha code to passthrough
      - returns: The output alpha code, transformed if necessary
      */
-    func passthrough(input: Int) -> Int {
-        return 0
+    func passthrough(input: Character) -> Character {
+        return input
     }
 }

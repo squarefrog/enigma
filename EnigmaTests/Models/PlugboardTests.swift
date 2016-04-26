@@ -9,9 +9,9 @@ class PlugboardTests: XCTestCase {
     }
 
     func test_ShouldPassThroughKeys() {
-        let input = 0
+        let input: Character = "A"
 
-        let output = plugboard.passthrough(0)
+        let output = plugboard.passthrough(input)
 
         XCTAssertEqual(input, output)
     }
