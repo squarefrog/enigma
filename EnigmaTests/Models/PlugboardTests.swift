@@ -7,7 +7,13 @@ class PlugboardTests: XCTestCase {
     var plugboard: Plugboard!
 
     override func setUp() {
+        super.setUp()
         plugboard = Plugboard()
+    }
+
+    override func tearDown() {
+        plugboard = nil
+        super.tearDown()
     }
 
     func test_ShouldPassThroughKeys() {
