@@ -1,6 +1,8 @@
 import XCTest
 @testable import Enigma
 
+// swiftlint:disable force_try
+
 class PlugboardTests: XCTestCase {
     var plugboard: Plugboard!
 
