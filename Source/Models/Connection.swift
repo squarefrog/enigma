@@ -10,6 +10,6 @@ struct Connection {
 
 extension Connection: Equatable { }
 
-func ==(lhs: Connection, rhs: Connection) -> Bool {
+func == (lhs: Connection, rhs: Connection) -> Bool {
     return lhs.startPoint == rhs.startPoint && lhs.endPoint == rhs.endPoint
 }
