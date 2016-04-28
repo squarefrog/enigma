@@ -39,4 +39,14 @@ struct Rotor {
     mutating func turnRotor() {
         rotorPosition += 1
     }
+
+    /**
+     Apply an offset to the rotor. This is the equivalent to the ring
+     setting, or *Ringstellung* in Enigma mapping documents.
+
+     - parameter offset: The ring setting for the rotor.
+     */
+    mutating func setOffset(offset: Int) {
+        rotorPosition = offset
+    }
 }

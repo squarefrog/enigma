@@ -30,4 +30,11 @@ class RotorTests: XCTestCase {
         let character = rotor.transformCharacter("A")
         XCTAssertEqual(character, "Y")
     }
+
+    func test_ShouldAllowRingOffset() {
+        rotor.setOffset(2)
+
+        let character = rotor.transformCharacter("A")
+        XCTAssertEqual(character, "X")
+    }
 }
