@@ -4,20 +4,20 @@ import Foundation
  *  A representation of an Enigma rotor.
  */
 struct Rotor {
-    /**
-     * The hardwired rotor mapping.
-     */
-    let mapping: [Int]
 
+    let mapping: [Int]
+    let turnoverNotches: [Int]
     private var rotorPosition = 0
 
     /**
      Initialise a new Rotor object
      - parameter mapping: The alphabetic mapping of the rotor.
-     - returns: A new Rotor instance
+     - parameter turnoverNotches: An array of turnover notch points,
+         where passing this point will advance the next rotor.
      */
-    init(mapping: [Int]) {
+    init(mapping: [Int], turnoverNotches: [Int] = []) {
         self.mapping = mapping
+        self.turnoverNotches = turnoverNotches
     }
 
     /**
