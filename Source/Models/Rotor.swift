@@ -37,6 +37,10 @@ struct Rotor {
      Advance the rotor.
      */
     mutating func turnRotor() {
+        guard rotorPosition < 25 else {
+            rotorPosition = 0
+            return
+        }
         rotorPosition += 1
     }
 
