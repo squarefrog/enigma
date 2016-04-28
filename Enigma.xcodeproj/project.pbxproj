@@ -20,6 +20,7 @@
 		0EF1F30A1CD2320F00B922C4 /* RotorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3091CD2320F00B922C4 /* RotorSet.swift */; };
 		0EF1F30C1CD2325000B922C4 /* RotorSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F30B1CD2325000B922C4 /* RotorSetTests.swift */; };
 		0EF1F3111CD2455800B922C4 /* RotorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3101CD2455800B922C4 /* RotorType.swift */; };
+		0EF1F3141CD2495A00B922C4 /* enigma_rotors.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EF1F3131CD2495A00B922C4 /* enigma_rotors.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		0EF1F3091CD2320F00B922C4 /* RotorSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorSet.swift; sourceTree = "<group>"; };
 		0EF1F30B1CD2325000B922C4 /* RotorSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorSetTests.swift; sourceTree = "<group>"; };
 		0EF1F3101CD2455800B922C4 /* RotorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorType.swift; sourceTree = "<group>"; };
+		0EF1F3131CD2495A00B922C4 /* enigma_rotors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = enigma_rotors.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +143,9 @@
 		0E5F575B1CCFD0A100381BAE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0EF1F30F1CD2453400B922C4 /* Enums */,
 				0E13E3451CD00155004CEEC3 /* Connection.swift */,
+				0EF1F30F1CD2453400B922C4 /* Enums */,
+				0EF1F3121CD2493400B922C4 /* JSON */,
 				0E35FB841CCFD0D7001B10E0 /* Plugboard.swift */,
 				0EC88B731CD0B31300A707BE /* Rotor.swift */,
 				0EF1F3091CD2320F00B922C4 /* RotorSet.swift */,
@@ -157,6 +160,14 @@
 				0EF1F3101CD2455800B922C4 /* RotorType.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		0EF1F3121CD2493400B922C4 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				0EF1F3131CD2495A00B922C4 /* enigma_rotors.json */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +254,7 @@
 			files = (
 				0E265F541CCFCE7D002E3788 /* LaunchScreen.storyboard in Resources */,
 				0E265F511CCFCE7D002E3788 /* Assets.xcassets in Resources */,
+				0EF1F3141CD2495A00B922C4 /* enigma_rotors.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
