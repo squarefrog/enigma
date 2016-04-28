@@ -19,6 +19,7 @@
 		0EC88B781CD0B35D00A707BE /* RotorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC88B771CD0B35D00A707BE /* RotorTests.swift */; };
 		0EF1F30A1CD2320F00B922C4 /* RotorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3091CD2320F00B922C4 /* RotorSet.swift */; };
 		0EF1F30C1CD2325000B922C4 /* RotorSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F30B1CD2325000B922C4 /* RotorSetTests.swift */; };
+		0EF1F3111CD2455800B922C4 /* RotorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3101CD2455800B922C4 /* RotorType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		0EC88B771CD0B35D00A707BE /* RotorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorTests.swift; sourceTree = "<group>"; };
 		0EF1F3091CD2320F00B922C4 /* RotorSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorSet.swift; sourceTree = "<group>"; };
 		0EF1F30B1CD2325000B922C4 /* RotorSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorSetTests.swift; sourceTree = "<group>"; };
+		0EF1F3101CD2455800B922C4 /* RotorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		0E5F575B1CCFD0A100381BAE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0EF1F30F1CD2453400B922C4 /* Enums */,
 				0E13E3451CD00155004CEEC3 /* Connection.swift */,
 				0E35FB841CCFD0D7001B10E0 /* Plugboard.swift */,
 				0EC88B731CD0B31300A707BE /* Rotor.swift */,
@@ -146,6 +149,14 @@
 			);
 			name = Models;
 			path = ../Source/Models;
+			sourceTree = "<group>";
+		};
+		0EF1F30F1CD2453400B922C4 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				0EF1F3101CD2455800B922C4 /* RotorType.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EF1F3111CD2455800B922C4 /* RotorType.swift in Sources */,
 				0EC88B741CD0B31300A707BE /* Rotor.swift in Sources */,
 				0E04B6921CD2117E00AE945B /* Character+unicodeScalarValue.swift in Sources */,
 				0E35FB851CCFD0D7001B10E0 /* Plugboard.swift in Sources */,
