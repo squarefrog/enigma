@@ -23,4 +23,11 @@ class RotorTests: XCTestCase {
         let character = rotor.transformCharacter("A")
         XCTAssertEqual(character, "Z")
     }
+
+    func test_ShouldIncrementMapping() {
+        rotor.turnRotor()
+
+        let character = rotor.transformCharacter("A")
+        XCTAssertEqual(character, "Y")
+    }
 }
