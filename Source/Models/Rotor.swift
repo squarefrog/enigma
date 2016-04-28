@@ -47,10 +47,10 @@ struct Rotor {
     /**
      Apply an offset to the rotor. This is the equivalent to the ring
      setting, or *Ringstellung* in Enigma mapping documents.
-
      - parameter offset: The ring setting for the rotor.
      */
-    mutating func setOffset(offset: Int) {
+    mutating func ringSetting(offset: Int) {
+        assert(offset < 26, "Ring offset should be between 0-25")
         rotorPosition = offset
     }
 }

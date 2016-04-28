@@ -32,14 +32,14 @@ class RotorTests: XCTestCase {
     }
 
     func test_ShouldAllowRingOffset() {
-        rotor.setOffset(2)
+        rotor.ringSetting(2)
 
         let character = rotor.transformCharacter("A")
         XCTAssertEqual(character, "X")
     }
 
     func test_ShouldWrapAroundRingSetting() {
-        rotor.setOffset(25)
+        rotor.ringSetting(25)
 
         rotor.turnRotor()
 
