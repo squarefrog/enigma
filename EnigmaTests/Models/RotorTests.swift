@@ -7,11 +7,20 @@ class RotorTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        rotor = Rotor()
+        var mapping: [Int] = []
+        for i in (0...25).reverse() {
+            mapping.append(i)
+        }
+        rotor = Rotor(mapping: mapping)
     }
 
     override func tearDown() {
         rotor = nil
         super.tearDown()
+    }
+
+    func test_ShouldTransformALetterThroughTheRotorsMapping() {
+        let character = rotor.transformCharacter("A")
+        XCTAssertEqual(character, "Z")
     }
 }
