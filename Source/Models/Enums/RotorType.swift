@@ -10,4 +10,6 @@ enum RotorType: String {
     case VI
     case VII
     case VIII
+    case Beta
+    case Gamma
 }

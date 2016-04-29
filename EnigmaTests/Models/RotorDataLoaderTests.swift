@@ -99,6 +99,25 @@ class RotorDataLoaderTests: XCTestCase {
         XCTAssertEqual(rotor!.turnoverNotches, [12, 25])
     }
 
+    func test_ShouldCreateRotorOfTypeBeta() {
+        let rotor = dataLoader.loadRotorOfType(.Beta)
+
+        let expectedMapping = "LEYJVCNIXWPBQMDRTAKZGFUHOS"
+        let actualMapping = createAlphaFromMapping(rotor!.mapping)
+        XCTAssertEqual(actualMapping, expectedMapping)
+
+        XCTAssertEqual(rotor!.turnoverNotches, [])
+    }
+
+    func test_ShouldCreateRotorOfTypeGamma() {
+        let rotor = dataLoader.loadRotorOfType(.Gamma)
+
+        let expectedMapping = "FSOKANUERHMBTIYCWLQPZXVGJD"
+        let actualMapping = createAlphaFromMapping(rotor!.mapping)
+        XCTAssertEqual(actualMapping, expectedMapping)
+
+        XCTAssertEqual(rotor!.turnoverNotches, [])
+    }
 
     // MARK: - Test Helpers
 
