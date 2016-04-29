@@ -9,8 +9,17 @@ struct RotorDataLoader {
     }
 
     func loadRotorOfType(type: RotorType) -> Rotor? {
-        guard let dataSource = rotorDataSource else { return nil }
         let key = type.rawValue.uppercaseString
+        return loadRotorWithKey(key)
+    }
+
+    func loadReflectorOfType(type: ReflectorType) -> Rotor? {
+        let key = type.rawValue.uppercaseString
+        return loadRotorWithKey(key)
+    }
+
+    private func loadRotorWithKey(key: String) -> Rotor? {
+        guard let dataSource = rotorDataSource else { return nil }
         guard let data = dataSource[key] as? [String: AnyObject] else { return nil }
         return rotorWithData(data)
     }

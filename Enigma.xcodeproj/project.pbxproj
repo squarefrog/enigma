@@ -23,6 +23,7 @@
 		0EF1F3481CD3D83C00B922C4 /* enigma_rotors.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EF1F3471CD3D83C00B922C4 /* enigma_rotors.json */; };
 		0EF1F34A1CD3D8C700B922C4 /* RotorDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3491CD3D8C700B922C4 /* RotorDataLoader.swift */; };
 		0EF1F34C1CD3D8FC00B922C4 /* RotorDataLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F34B1CD3D8FC00B922C4 /* RotorDataLoaderTests.swift */; };
+		0EF1F34E1CD3EE4D00B922C4 /* ReflectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F34D1CD3EE4D00B922C4 /* ReflectorType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		0EF1F3471CD3D83C00B922C4 /* enigma_rotors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = enigma_rotors.json; sourceTree = "<group>"; };
 		0EF1F3491CD3D8C700B922C4 /* RotorDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorDataLoader.swift; sourceTree = "<group>"; };
 		0EF1F34B1CD3D8FC00B922C4 /* RotorDataLoaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorDataLoaderTests.swift; sourceTree = "<group>"; };
+		0EF1F34D1CD3EE4D00B922C4 /* ReflectorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectorType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				0EF1F3101CD2455800B922C4 /* RotorType.swift */,
+				0EF1F34D1CD3EE4D00B922C4 /* ReflectorType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				0E13E3461CD00155004CEEC3 /* Connection.swift in Sources */,
 				0E265F4A1CCFCE7D002E3788 /* AppDelegate.swift in Sources */,
 				0EF1F34A1CD3D8C700B922C4 /* RotorDataLoader.swift in Sources */,
+				0EF1F34E1CD3EE4D00B922C4 /* ReflectorType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

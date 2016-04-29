@@ -119,6 +119,46 @@ class RotorDataLoaderTests: XCTestCase {
         XCTAssertEqual(rotor!.turnoverNotches, [])
     }
 
+    func test_ShouldCreateReflectorOfTypeB() {
+        let rotor = dataLoader.loadReflectorOfType(.B)
+
+        let expectedMapping = "YRUHQSLDPXNGOKMIEBFZCWVJAT"
+        let actualMapping = createAlphaFromMapping(rotor!.mapping)
+        XCTAssertEqual(actualMapping, expectedMapping)
+
+        XCTAssertEqual(rotor!.turnoverNotches, [])
+    }
+
+    func test_ShouldCreateReflectorOfTypeC() {
+        let rotor = dataLoader.loadReflectorOfType(.C)
+
+        let expectedMapping = "FVPJIAOYEDRZXWGCTKUQSBNMHL"
+        let actualMapping = createAlphaFromMapping(rotor!.mapping)
+        XCTAssertEqual(actualMapping, expectedMapping)
+
+        XCTAssertEqual(rotor!.turnoverNotches, [])
+    }
+
+    func test_ShouldCreateReflectorOfTypeBThin() {
+        let rotor = dataLoader.loadReflectorOfType(.ThinB)
+
+        let expectedMapping = "ENKQAUYWJICOPBLMDXZVFTHRGS"
+        let actualMapping = createAlphaFromMapping(rotor!.mapping)
+        XCTAssertEqual(actualMapping, expectedMapping)
+
+        XCTAssertEqual(rotor!.turnoverNotches, [])
+    }
+
+    func test_ShouldCreateReflectorOfTypeCThin() {
+        let rotor = dataLoader.loadReflectorOfType(.ThinC)
+
+        let expectedMapping = "RDOBJNTKVEHMLFCWZAXGYIPSUQ"
+        let actualMapping = createAlphaFromMapping(rotor!.mapping)
+        XCTAssertEqual(actualMapping, expectedMapping)
+
+        XCTAssertEqual(rotor!.turnoverNotches, [])
+    }
+
     // MARK: - Test Helpers
 
     private func createAlphaFromMapping(mapping: [Int]) -> String {
