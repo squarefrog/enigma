@@ -10,6 +10,7 @@ struct RotorSet {
     var secondRotor: Rotor?
     var thirdRotor: Rotor?
     var fourthRotor: Rotor?
+    var reflector: Rotor?
 
     /**
      Load a rotor into a specific position from right to left.
@@ -25,7 +26,16 @@ struct RotorSet {
         case .Second: secondRotor = rotor
         case .Third: thirdRotor = rotor
         case .Fourth: fourthRotor = rotor
-        default: return
         }
+    }
+
+    /**
+     Load a reflector rotor into the reflector position.
+
+     - parameter type: The reflector type to load.
+     */
+    mutating func loadReflectorType(type: ReflectorType) {
+        guard let rotor = dataLoader.loadReflectorOfType(type) else { return }
+        reflector = rotor
     }
 }

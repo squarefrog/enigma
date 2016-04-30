@@ -58,4 +58,14 @@ class RotorSetTests: XCTestCase {
         XCTAssertNotNil(rotor)
         XCTAssertEqual(rotor?.name, "IV")
     }
+
+    func test_ShouldSetReflector() {
+        rotorSet.dataLoader = MockDataLoader()
+
+        rotorSet.loadReflectorType(.B)
+
+        let rotor = rotorSet.reflector
+        XCTAssertNotNil(rotor)
+        XCTAssertEqual(rotor?.name, "UKW-B")
+    }
 }

@@ -5,5 +5,4 @@ enum RotorPosition {
     case Second
     case Third
     case Fourth
-    case Reflector
 }
