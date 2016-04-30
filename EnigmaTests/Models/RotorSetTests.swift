@@ -28,4 +28,14 @@ class RotorSetTests: XCTestCase {
         XCTAssertNotNil(firstRotor)
         XCTAssertEqual(firstRotor?.name, "I")
     }
+
+    func test_ShouldSetSecondRotor() {
+        rotorSet.dataLoader = MockDataLoader()
+
+        rotorSet.loadRotorType(.II, position: .Second)
+
+        let firstRotor = rotorSet.secondRotor
+        XCTAssertNotNil(firstRotor)
+        XCTAssertEqual(firstRotor?.name, "II")
+    }
 }
