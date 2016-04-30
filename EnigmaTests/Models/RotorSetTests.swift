@@ -18,4 +18,14 @@ class RotorSetTests: XCTestCase {
     func test_ShouldLazyLoadRotorDataLoader() {
         XCTAssertNotNil(rotorSet.dataLoader)
     }
+
+    func test_ShouldSetFirstRotor() {
+        rotorSet.dataLoader = MockDataLoader()
+
+        rotorSet.loadRotorType(.I, position: .First)
+
+        let firstRotor = rotorSet.firstRotor
+        XCTAssertNotNil(firstRotor)
+        XCTAssertEqual(firstRotor?.name, "I")
+    }
 }
