@@ -62,8 +62,8 @@ class PlugboardTests: XCTestCase {
 
         let connection = Connection(startPoint: "U", endPoint: "V")
 
-        XCTAssertThrowsError(try plugboard.createConnection(connection))
-        XCTAssertThrows(PlugboardError.OutOfConnections) { [unowned self] in
+        XCTAssertThrowsSpecificError(PlugboardError.OutOfConnections) {
+            [unowned self] in
             try self.plugboard.createConnection(connection)
         }
     }
@@ -73,7 +73,9 @@ class PlugboardTests: XCTestCase {
         try! plugboard.createConnection(connection)
 
         let newConnection = Connection(startPoint: "A", endPoint: "Z")
-        XCTAssertThrows(PlugboardError.InvalidConnection) { [unowned self] in
+
+        XCTAssertThrowsSpecificError(PlugboardError.InvalidConnection) {
+            [unowned self]  in
             try self.plugboard.createConnection(newConnection)
         }
     }
