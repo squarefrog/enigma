@@ -11,6 +11,12 @@ struct RotorSet {
     var thirdRotor: Rotor?
     var fourthRotor: Rotor?
 
+    /**
+     Load a rotor into a specific position from right to left.
+
+     - parameter type:     The type of rotor to load.
+     - parameter position: The position to load the rotor.
+     */
     mutating func loadRotorType(type: RotorType, position: RotorPosition) {
         guard let rotor = dataLoader.loadRotorOfType(type) else { return }
 
