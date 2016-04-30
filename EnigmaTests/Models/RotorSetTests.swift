@@ -24,9 +24,9 @@ class RotorSetTests: XCTestCase {
 
         rotorSet.loadRotorType(.I, position: .First)
 
-        let firstRotor = rotorSet.firstRotor
-        XCTAssertNotNil(firstRotor)
-        XCTAssertEqual(firstRotor?.name, "I")
+        let rotor = rotorSet.firstRotor
+        XCTAssertNotNil(rotor)
+        XCTAssertEqual(rotor?.name, "I")
     }
 
     func test_ShouldSetSecondRotor() {
@@ -34,8 +34,18 @@ class RotorSetTests: XCTestCase {
 
         rotorSet.loadRotorType(.II, position: .Second)
 
-        let firstRotor = rotorSet.secondRotor
-        XCTAssertNotNil(firstRotor)
-        XCTAssertEqual(firstRotor?.name, "II")
+        let rotor = rotorSet.secondRotor
+        XCTAssertNotNil(rotor)
+        XCTAssertEqual(rotor?.name, "II")
+    }
+
+    func test_ShouldSetThirdRotor() {
+        rotorSet.dataLoader = MockDataLoader()
+
+        rotorSet.loadRotorType(.III, position: .Third)
+
+        let rotor = rotorSet.thirdRotor
+        XCTAssertNotNil(rotor)
+        XCTAssertEqual(rotor?.name, "III")
     }
 }
