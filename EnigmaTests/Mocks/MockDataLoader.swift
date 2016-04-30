@@ -3,20 +3,20 @@ import Foundation
 
 struct MockDataLoader: RotorLoadable {
     func loadRotorOfType(type: RotorType) -> Rotor? {
-        return createRotor()
+        return createRotorWithName(type.rawValue)
     }
 
     func loadReflectorOfType(type: ReflectorType) -> Rotor? {
-        return createRotor()
+        return createRotorWithName(type.rawValue)
     }
 
-    private func createRotor() -> Rotor {
+    private func createRotorWithName(name: String) -> Rotor {
         var mapping: [Int] = []
 
         for i in (0...25).reverse() {
             mapping.append(i)
         }
 
-        return Rotor(mapping: mapping)
+        return Rotor(mapping: mapping, name: name)
     }
 }

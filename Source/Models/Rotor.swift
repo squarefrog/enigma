@@ -6,17 +6,20 @@ import Foundation
 struct Rotor {
 
     let mapping: [Int]
+    let name: String
     let turnoverNotches: [Int]
     private var rotorPosition = 0
 
     /**
      Initialise a new Rotor object
      - parameter mapping: The alphabetic mapping of the rotor.
+     - parameter name: The name of the rotor.
      - parameter turnoverNotches: An array of turnover notch points,
          where passing this point will advance the next rotor.
      */
-    init(mapping: [Int], turnoverNotches: [Int] = []) {
+    init(mapping: [Int], name: String, turnoverNotches: [Int] = []) {
         self.mapping = mapping
+        self.name = name
         self.turnoverNotches = turnoverNotches
     }
 

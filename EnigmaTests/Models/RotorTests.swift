@@ -5,18 +5,23 @@ class RotorTests: XCTestCase {
 
     var rotor: Rotor!
     var mapping: [Int] = []
+    let rotorName = "IV"
 
     override func setUp() {
         super.setUp()
         for i in (0...25).reverse() {
             mapping.append(i)
         }
-        rotor = Rotor(mapping: mapping)
+        rotor = Rotor(mapping: mapping, name: rotorName)
     }
 
     override func tearDown() {
         rotor = nil
         super.tearDown()
+    }
+
+    func test_ShouldSetNameVariable() {
+        XCTAssertEqual(rotor.name, rotorName)
     }
 
     func test_ShouldTransformALetterThroughTheRotorsMapping() {
@@ -53,7 +58,9 @@ class RotorTests: XCTestCase {
 
     func test_TurnoverNotchesShouldBeReturned() {
         let notches = [ 13, 26 ]
-        rotor = Rotor(mapping: mapping, turnoverNotches: notches)
+        rotor = Rotor(mapping: mapping,
+                      name: rotorName,
+                      turnoverNotches: notches)
 
         XCTAssertEqual(rotor.turnoverNotches, notches)
     }

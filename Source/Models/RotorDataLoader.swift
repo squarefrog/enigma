@@ -21,7 +21,7 @@ struct RotorDataLoader: RotorLoadable {
     private func loadRotorWithKey(key: String) -> Rotor? {
         guard let dataSource = rotorDataSource else { return nil }
         guard let data = dataSource[key] as? [String: AnyObject] else { return nil }
-        return rotorWithData(data)
+        return rotorWithData(data, name: key)
     }
 
     private func loadDataSource() -> [String: AnyObject]? {
@@ -37,9 +37,9 @@ struct RotorDataLoader: RotorLoadable {
         return nil
     }
 
-    private func rotorWithData(data: [String: AnyObject]) -> Rotor? {
+    private func rotorWithData(data: [String: AnyObject], name: String) -> Rotor? {
         guard let mapping = data["mapping"] as? [Int] else { return nil }
         let turnover = data["turnover"] as? [Int] ?? []
-        return Rotor(mapping: mapping, turnoverNotches: turnover)
+        return Rotor(mapping: mapping, name: name, turnoverNotches: turnover)
     }
 }
