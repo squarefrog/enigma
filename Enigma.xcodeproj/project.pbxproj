@@ -26,6 +26,7 @@
 		0EF1F34E1CD3EE4D00B922C4 /* ReflectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F34D1CD3EE4D00B922C4 /* ReflectorType.swift */; };
 		0EF1F3501CD4E0E000B922C4 /* RotorPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F34F1CD4E0E000B922C4 /* RotorPosition.swift */; };
 		0EF1F3561CD4E20D00B922C4 /* RotorLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3551CD4E20D00B922C4 /* RotorLoadable.swift */; };
+		0EF1F3591CD4E2C200B922C4 /* MockDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3581CD4E2C200B922C4 /* MockDataLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		0EF1F34D1CD3EE4D00B922C4 /* ReflectorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectorType.swift; sourceTree = "<group>"; };
 		0EF1F34F1CD4E0E000B922C4 /* RotorPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorPosition.swift; sourceTree = "<group>"; };
 		0EF1F3551CD4E20D00B922C4 /* RotorLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorLoadable.swift; sourceTree = "<group>"; };
+		0EF1F3581CD4E2C200B922C4 /* MockDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				0E13E3421CCFFA20004CEEC3 /* Helpers */,
 				0E265F601CCFCE7D002E3788 /* Info.plist */,
+				0EF1F3571CD4E2A800B922C4 /* Mocks */,
 				0E35FB861CCFD0EC001B10E0 /* Models */,
 			);
 			path = EnigmaTests;
@@ -184,6 +187,14 @@
 			);
 			name = Protocols;
 			path = ../Source/Protocols;
+			sourceTree = "<group>";
+		};
+		0EF1F3571CD4E2A800B922C4 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				0EF1F3581CD4E2C200B922C4 /* MockDataLoader.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,6 +336,7 @@
 			files = (
 				0E13E3441CCFFA71004CEEC3 /* XCTAssertThrows.swift in Sources */,
 				0E35FB891CCFD128001B10E0 /* PlugboardTests.swift in Sources */,
+				0EF1F3591CD4E2C200B922C4 /* MockDataLoader.swift in Sources */,
 				0EC88B781CD0B35D00A707BE /* RotorTests.swift in Sources */,
 				0EF1F34C1CD3D8FC00B922C4 /* RotorDataLoaderTests.swift in Sources */,
 				0EF1F30C1CD2325000B922C4 /* RotorSetTests.swift in Sources */,
