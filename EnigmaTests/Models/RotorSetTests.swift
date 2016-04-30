@@ -1,6 +1,7 @@
 import XCTest
 @testable import Enigma
 
+// swiftlint:disable force_try
 class RotorSetTests: XCTestCase {
 
     var rotorSet: RotorSet!
@@ -22,7 +23,7 @@ class RotorSetTests: XCTestCase {
     func test_ShouldSetFirstRotor() {
         rotorSet.dataLoader = MockDataLoader()
 
-        rotorSet.loadRotorType(.I, position: .First)
+        try! rotorSet.loadRotorType(.I, position: .First)
 
         let rotor = rotorSet.firstRotor
         XCTAssertNotNil(rotor)
@@ -32,7 +33,7 @@ class RotorSetTests: XCTestCase {
     func test_ShouldSetSecondRotor() {
         rotorSet.dataLoader = MockDataLoader()
 
-        rotorSet.loadRotorType(.II, position: .Second)
+        try! rotorSet.loadRotorType(.II, position: .Second)
 
         let rotor = rotorSet.secondRotor
         XCTAssertNotNil(rotor)
@@ -42,7 +43,7 @@ class RotorSetTests: XCTestCase {
     func test_ShouldSetThirdRotor() {
         rotorSet.dataLoader = MockDataLoader()
 
-        rotorSet.loadRotorType(.III, position: .Third)
+        try! rotorSet.loadRotorType(.III, position: .Third)
 
         let rotor = rotorSet.thirdRotor
         XCTAssertNotNil(rotor)
@@ -52,7 +53,7 @@ class RotorSetTests: XCTestCase {
     func test_ShouldSetFourthRotor() {
         rotorSet.dataLoader = MockDataLoader()
 
-        rotorSet.loadRotorType(.IV, position: .Fourth)
+        try! rotorSet.loadRotorType(.IV, position: .Fourth)
 
         let rotor = rotorSet.fourthRotor
         XCTAssertNotNil(rotor)
@@ -67,5 +68,13 @@ class RotorSetTests: XCTestCase {
         let rotor = rotorSet.reflector
         XCTAssertNotNil(rotor)
         XCTAssertEqual(rotor?.name, "UKW-B")
+    }
+
+    func test_ShouldNotAllowSettingTheSameRotorTwice() {
+        try! rotorSet.loadRotorType(.I, position: .First)
+        XCTAssertThrowsSpecificError(RotorSetError.RotorAlreadyUsed) {
+            [unowned self] in
+            try self.rotorSet.loadRotorType(.I, position: .Second)
+        }
     }
 }

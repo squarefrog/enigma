@@ -57,3 +57,13 @@ struct Rotor {
         rotorPosition = offset
     }
 }
+
+// MARK: - Equatable
+
+extension Rotor: Equatable { }
+
+func == (lhs: Rotor, rhs: Rotor) -> Bool {
+    return lhs.mapping == rhs.mapping &&
+        lhs.name == rhs.name &&
+        lhs.turnoverNotches == rhs.turnoverNotches
+}

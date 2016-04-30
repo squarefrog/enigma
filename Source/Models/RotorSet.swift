@@ -1,5 +1,9 @@
 import Foundation
 
+enum RotorSetError: ErrorType {
+    case RotorAlreadyUsed
+}
+
 /**
  *  A managing class of a set of rotors.
  */
@@ -17,9 +21,16 @@ struct RotorSet {
 
      - parameter type:     The type of rotor to load.
      - parameter position: The position to load the rotor.
+     - throws: RotorSetError if unable to load rotor.
      */
-    mutating func loadRotorType(type: RotorType, position: RotorPosition) {
+    mutating func loadRotorType(type: RotorType, position: RotorPosition) throws {
         guard let rotor = dataLoader.loadRotorOfType(type) else { return }
+
+        for loadedRotor in [ firstRotor, secondRotor, thirdRotor, fourthRotor ] {
+            if rotor == loadedRotor {
+                throw RotorSetError.RotorAlreadyUsed
+            }
+        }
 
         switch position {
         case .First: firstRotor = rotor
