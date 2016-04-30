@@ -48,4 +48,14 @@ class RotorSetTests: XCTestCase {
         XCTAssertNotNil(rotor)
         XCTAssertEqual(rotor?.name, "III")
     }
+
+    func test_ShouldSetFourthRotor() {
+        rotorSet.dataLoader = MockDataLoader()
+
+        rotorSet.loadRotorType(.IV, position: .Fourth)
+
+        let rotor = rotorSet.fourthRotor
+        XCTAssertNotNil(rotor)
+        XCTAssertEqual(rotor?.name, "IV")
+    }
 }
