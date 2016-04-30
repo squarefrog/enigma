@@ -5,4 +5,5 @@ import Foundation
  */
 struct RotorSet {
 
+    lazy var dataLoader = RotorDataLoader()
 }

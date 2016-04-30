@@ -14,4 +14,8 @@ class RotorSetTests: XCTestCase {
         rotorSet = nil
         super.tearDown()
     }
+
+    func test_ShouldLazyLoadRotorDataLoader() {
+        XCTAssertNotNil(rotorSet.dataLoader)
+    }
 }
