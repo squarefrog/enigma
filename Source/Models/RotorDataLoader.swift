@@ -1,6 +1,6 @@
 import Foundation
 
-struct RotorDataLoader {
+struct RotorDataLoader: RotorLoadable {
 
     var rotorDataSource: [String: AnyObject]?
 
