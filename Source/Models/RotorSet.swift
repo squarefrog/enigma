@@ -9,7 +9,7 @@ enum RotorSetError: ErrorType {
  */
 struct RotorSet {
 
-    lazy var dataLoader: RotorLoadable = RotorDataLoader()
+    lazy var rotorBox: RotorLoadable = RotorBox()
     var firstRotor: Rotor?
     var secondRotor: Rotor?
     var thirdRotor: Rotor?
@@ -24,7 +24,7 @@ struct RotorSet {
      - throws: RotorSetError if unable to load rotor.
      */
     mutating func loadRotorType(type: RotorType, position: RotorPosition) throws {
-        let rotor = dataLoader.loadRotorOfType(type)
+        let rotor = rotorBox.loadRotorOfType(type)
 
         for loadedRotor in [ firstRotor, secondRotor, thirdRotor, fourthRotor ] {
             if rotor == loadedRotor {
@@ -46,6 +46,6 @@ struct RotorSet {
      - parameter type: The reflector type to load.
      */
     mutating func loadReflectorType(type: ReflectorType) {
-        reflector = dataLoader.loadReflectorOfType(type)
+        reflector = rotorBox.loadReflectorOfType(type)
     }
 }

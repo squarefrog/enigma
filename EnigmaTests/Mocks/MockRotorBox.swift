@@ -1,12 +1,12 @@
 import Foundation
 @testable import Enigma
 
-struct MockDataLoader: RotorLoadable {
+struct MockRotorBox: RotorLoadable {
     func loadRotorOfType(type: RotorType) -> Rotor {
         return createRotorWithName(type.rawValue)
     }
 
-    func loadReflectorOfType(type: ReflectorType) -> Rotor? {
+    func loadReflectorOfType(type: ReflectorType) -> Rotor {
         return createRotorWithName(type.rawValue)
     }
 

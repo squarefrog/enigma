@@ -1,6 +1,9 @@
 import Foundation
 
-struct RotorDataLoader: RotorLoadable {
+/**
+ *  The equivalent a box of rotors.
+ */
+struct RotorBox: RotorLoadable {
 
     // swiftlint:disable function_body_length
     func loadRotorOfType(type: RotorType) -> Rotor {

@@ -1,13 +1,13 @@
 import XCTest
 @testable import Enigma
 
-class RotorDataLoaderTests: XCTestCase {
+class RotorBoxTests: XCTestCase {
 
-    var dataLoader: RotorDataLoader!
+    var dataLoader: RotorBox!
 
     override func setUp() {
         super.setUp()
-        dataLoader = RotorDataLoader()
+        dataLoader = RotorBox()
     }
 
     override func tearDown() {
@@ -88,29 +88,29 @@ class RotorDataLoaderTests: XCTestCase {
     func test_ShouldCreateReflectorOfTypeB() {
         let rotor = dataLoader.loadReflectorOfType(.B)
 
-        XCTAssertEqual(rotor!.mapping, "YRUHQSLDPXNGOKMIEBFZCWVJAT")
-        XCTAssertEqual(rotor!.turnoverNotches, [])
+        XCTAssertEqual(rotor.mapping, "YRUHQSLDPXNGOKMIEBFZCWVJAT")
+        XCTAssertEqual(rotor.turnoverNotches, [])
     }
 
     func test_ShouldCreateReflectorOfTypeC() {
         let rotor = dataLoader.loadReflectorOfType(.C)
 
-        XCTAssertEqual(rotor!.mapping, "FVPJIAOYEDRZXWGCTKUQSBNMHL")
-        XCTAssertEqual(rotor!.turnoverNotches, [])
+        XCTAssertEqual(rotor.mapping, "FVPJIAOYEDRZXWGCTKUQSBNMHL")
+        XCTAssertEqual(rotor.turnoverNotches, [])
     }
 
     func test_ShouldCreateReflectorOfTypeBThin() {
         let rotor = dataLoader.loadReflectorOfType(.ThinB)
 
-        XCTAssertEqual(rotor!.mapping, "ENKQAUYWJICOPBLMDXZVFTHRGS")
-        XCTAssertEqual(rotor!.turnoverNotches, [])
+        XCTAssertEqual(rotor.mapping, "ENKQAUYWJICOPBLMDXZVFTHRGS")
+        XCTAssertEqual(rotor.turnoverNotches, [])
     }
 
     func test_ShouldCreateReflectorOfTypeCThin() {
         let rotor = dataLoader.loadReflectorOfType(.ThinC)
 
-        XCTAssertEqual(rotor!.mapping, "RDOBJNTKVEHMLFCWZAXGYIPSUQ")
-        XCTAssertEqual(rotor!.turnoverNotches, [])
+        XCTAssertEqual(rotor.mapping, "RDOBJNTKVEHMLFCWZAXGYIPSUQ")
+        XCTAssertEqual(rotor.turnoverNotches, [])
     }
 
     // MARK: - Test Helpers

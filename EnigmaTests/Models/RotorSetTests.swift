@@ -16,12 +16,12 @@ class RotorSetTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_ShouldLazyLoadRotorDataLoader() {
-        XCTAssertNotNil(rotorSet.dataLoader)
+    func test_ShouldLazyLoadRotorBox() {
+        XCTAssertNotNil(rotorSet.rotorBox)
     }
 
     func test_ShouldSetFirstRotor() {
-        rotorSet.dataLoader = MockDataLoader()
+        rotorSet.rotorBox = MockRotorBox()
 
         try! rotorSet.loadRotorType(.I, position: .First)
 
@@ -31,7 +31,7 @@ class RotorSetTests: XCTestCase {
     }
 
     func test_ShouldSetSecondRotor() {
-        rotorSet.dataLoader = MockDataLoader()
+        rotorSet.rotorBox = MockRotorBox()
 
         try! rotorSet.loadRotorType(.II, position: .Second)
 
@@ -41,7 +41,7 @@ class RotorSetTests: XCTestCase {
     }
 
     func test_ShouldSetThirdRotor() {
-        rotorSet.dataLoader = MockDataLoader()
+        rotorSet.rotorBox = MockRotorBox()
 
         try! rotorSet.loadRotorType(.III, position: .Third)
 
@@ -51,7 +51,7 @@ class RotorSetTests: XCTestCase {
     }
 
     func test_ShouldSetFourthRotor() {
-        rotorSet.dataLoader = MockDataLoader()
+        rotorSet.rotorBox = MockRotorBox()
 
         try! rotorSet.loadRotorType(.IV, position: .Fourth)
 
@@ -61,7 +61,7 @@ class RotorSetTests: XCTestCase {
     }
 
     func test_ShouldSetReflector() {
-        rotorSet.dataLoader = MockDataLoader()
+        rotorSet.rotorBox = MockRotorBox()
 
         rotorSet.loadReflectorType(.B)
 
