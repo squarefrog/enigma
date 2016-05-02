@@ -5,9 +5,9 @@ import Foundation
  */
 struct Rotor {
 
-    let mapping: [Int]
+    var mapping: String
     let name: String
-    let turnoverNotches: [Int]
+    let turnoverNotches: [Character]
     private var rotorPosition = 0
 
     /**
@@ -17,7 +17,7 @@ struct Rotor {
      - parameter turnoverNotches: An array of turnover notch points,
          where passing this point will advance the next rotor.
      */
-    init(mapping: [Int], name: String, turnoverNotches: [Int] = []) {
+    init(mapping: String, name: String, turnoverNotches: [Character] = []) {
         self.mapping = mapping
         self.name = name
         self.turnoverNotches = turnoverNotches
@@ -30,10 +30,9 @@ struct Rotor {
      */
     func transformCharacter(character: Character) -> Character? {
         let offset = Character("A").unicodeScalarValue()
-        let value = character.unicodeScalarValue()
-        let offsetValue = value - offset + rotorPosition
-        let newValue = mapping[offsetValue]
-        return Character(UnicodeScalar(newValue + offset))
+        let amount = character.unicodeScalarValue() - offset
+        let index = mapping.startIndex.advancedBy(amount)
+        return mapping[index]
     }
 
     /**
@@ -45,6 +44,10 @@ struct Rotor {
             return
         }
         rotorPosition += 1
+
+        let startIndex = mapping.startIndex
+        let char = mapping.removeAtIndex(startIndex)
+        mapping.append(char)
     }
 
     /**
@@ -53,8 +56,13 @@ struct Rotor {
      - parameter offset: The ring setting for the rotor.
      */
     mutating func ringSetting(offset: Int) {
-        assert(offset < 26, "Ring offset should be between 0-25")
-        rotorPosition = offset
+        assert(offset < 26 && offset > 0, "Ring offset should be between 0-25")
+
+        for _ in 0...offset {
+            let index = mapping.endIndex.predecessor()
+            let char = mapping.removeAtIndex(index)
+            mapping.insert(char, atIndex: mapping.startIndex)
+        }
     }
 }
 

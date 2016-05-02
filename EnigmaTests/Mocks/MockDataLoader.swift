@@ -2,7 +2,7 @@ import Foundation
 @testable import Enigma
 
 struct MockDataLoader: RotorLoadable {
-    func loadRotorOfType(type: RotorType) -> Rotor? {
+    func loadRotorOfType(type: RotorType) -> Rotor {
         return createRotorWithName(type.rawValue)
     }
 
@@ -11,12 +11,7 @@ struct MockDataLoader: RotorLoadable {
     }
 
     private func createRotorWithName(name: String) -> Rotor {
-        var mapping: [Int] = []
-
-        for i in (0...25).reverse() {
-            mapping.append(i)
-        }
-
+        let mapping = "ZYXWVUTSRQPONMLKJIHGFEDCBA"
         return Rotor(mapping: mapping, name: name)
     }
 }

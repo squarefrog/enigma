@@ -4,14 +4,11 @@ import XCTest
 class RotorTests: XCTestCase {
 
     var rotor: Rotor!
-    var mapping: [Int] = []
+    let mapping = "ZYXWVUTSRQPONMLKJIHGFEDCBA"
     let rotorName = "IV"
 
     override func setUp() {
         super.setUp()
-        for i in (0...25).reverse() {
-            mapping.append(i)
-        }
         rotor = Rotor(mapping: mapping, name: rotorName)
     }
 
@@ -40,16 +37,7 @@ class RotorTests: XCTestCase {
         rotor.ringSetting(2)
 
         let character = rotor.transformCharacter("A")
-        XCTAssertEqual(character, "X")
-    }
-
-    func test_ShouldWrapAroundRingSetting() {
-        rotor.ringSetting(25)
-
-        rotor.turnRotor()
-
-        let character = rotor.transformCharacter("A")
-        XCTAssertEqual(character, "Z")
+        XCTAssertEqual(character, "C")
     }
 
     func test_TurnoverNotchesShouldBeOptional() {
@@ -57,7 +45,7 @@ class RotorTests: XCTestCase {
     }
 
     func test_TurnoverNotchesShouldBeReturned() {
-        let notches = [ 13, 26 ]
+        let notches: [Character] = [ "Z", "M" ]
         rotor = Rotor(mapping: mapping,
                       name: rotorName,
                       turnoverNotches: notches)

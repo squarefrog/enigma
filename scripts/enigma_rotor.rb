@@ -79,9 +79,8 @@ end
 
 def parse_mapping(options)
   mapping = []
-  options[:mapping].each_char.with_index do |char, index|
-    char_index = char.ord - 65
-    mapping << char_index
+  options[:mapping].each_char do |char|
+    mapping << char
   end
   mapping
 end
@@ -89,7 +88,7 @@ end
 def turnover_number(notches)
   turnovers = []
   notches.each_char do |char|
-    turnovers << char.ord - 65
+    turnovers << char
   end
   turnovers
 end
@@ -99,7 +98,6 @@ def create_mapping(options)
   rotor_name = options[:name]
   mapping = parse_mapping(options)
   mapping_hash = {
-    "rotor_name" => rotor_name,
     "mapping" => mapping
   }
 
@@ -107,7 +105,7 @@ def create_mapping(options)
     mapping_hash["turnover"] = turnover_number(options[:turnover])
   end
 
-  mapping_hash
+  { rotor_name => mapping_hash }
 end
 
 puts create_mapping(options).to_json

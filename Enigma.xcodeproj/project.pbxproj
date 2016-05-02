@@ -20,7 +20,6 @@
 		0EF1F30A1CD2320F00B922C4 /* RotorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3091CD2320F00B922C4 /* RotorSet.swift */; };
 		0EF1F30C1CD2325000B922C4 /* RotorSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F30B1CD2325000B922C4 /* RotorSetTests.swift */; };
 		0EF1F3111CD2455800B922C4 /* RotorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3101CD2455800B922C4 /* RotorType.swift */; };
-		0EF1F3481CD3D83C00B922C4 /* enigma_rotors.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EF1F3471CD3D83C00B922C4 /* enigma_rotors.json */; };
 		0EF1F34A1CD3D8C700B922C4 /* RotorDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3491CD3D8C700B922C4 /* RotorDataLoader.swift */; };
 		0EF1F34C1CD3D8FC00B922C4 /* RotorDataLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F34B1CD3D8FC00B922C4 /* RotorDataLoaderTests.swift */; };
 		0EF1F34E1CD3EE4D00B922C4 /* ReflectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F34D1CD3EE4D00B922C4 /* ReflectorType.swift */; };
@@ -57,7 +56,6 @@
 		0EF1F3091CD2320F00B922C4 /* RotorSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorSet.swift; sourceTree = "<group>"; };
 		0EF1F30B1CD2325000B922C4 /* RotorSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorSetTests.swift; sourceTree = "<group>"; };
 		0EF1F3101CD2455800B922C4 /* RotorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorType.swift; sourceTree = "<group>"; };
-		0EF1F3471CD3D83C00B922C4 /* enigma_rotors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = enigma_rotors.json; sourceTree = "<group>"; };
 		0EF1F3491CD3D8C700B922C4 /* RotorDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorDataLoader.swift; sourceTree = "<group>"; };
 		0EF1F34B1CD3D8FC00B922C4 /* RotorDataLoaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorDataLoaderTests.swift; sourceTree = "<group>"; };
 		0EF1F34D1CD3EE4D00B922C4 /* ReflectorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectorType.swift; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				0E13E3451CD00155004CEEC3 /* Connection.swift */,
-				0EF1F3471CD3D83C00B922C4 /* enigma_rotors.json */,
 				0EF1F30F1CD2453400B922C4 /* Enums */,
 				0E35FB841CCFD0D7001B10E0 /* Plugboard.swift */,
 				0EC88B731CD0B31300A707BE /* Rotor.swift */,
@@ -281,7 +278,6 @@
 			files = (
 				0E265F541CCFCE7D002E3788 /* LaunchScreen.storyboard in Resources */,
 				0E265F511CCFCE7D002E3788 /* Assets.xcassets in Resources */,
-				0EF1F3481CD3D83C00B922C4 /* enigma_rotors.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

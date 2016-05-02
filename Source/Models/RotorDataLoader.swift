@@ -2,44 +2,70 @@ import Foundation
 
 struct RotorDataLoader: RotorLoadable {
 
-    var rotorDataSource: [String: AnyObject]?
-
-    init() {
-        rotorDataSource = loadDataSource()
-    }
-
-    func loadRotorOfType(type: RotorType) -> Rotor? {
-        let key = type.rawValue.uppercaseString
-        return loadRotorWithKey(key)
-    }
-
-    func loadReflectorOfType(type: ReflectorType) -> Rotor? {
-        let key = type.rawValue.uppercaseString
-        return loadRotorWithKey(key)
-    }
-
-    private func loadRotorWithKey(key: String) -> Rotor? {
-        guard let dataSource = rotorDataSource else { return nil }
-        guard let data = dataSource[key] as? [String: AnyObject] else { return nil }
-        return rotorWithData(data, name: key)
-    }
-
-    private func loadDataSource() -> [String: AnyObject]? {
-        let bundle = NSBundle.mainBundle()
-        let path = bundle.pathForResource("enigma_rotors", ofType: "json")!
-        let data = NSData(contentsOfFile: path)!
-        do {
-            // swiftlint:disable line_length
-            return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject]
-        } catch let error {
-            print("Error deserialising rotor json data \(error)")
+    // swiftlint:disable function_body_length
+    func loadRotorOfType(type: RotorType) -> Rotor {
+        switch type {
+        case .I:
+            return Rotor(mapping: "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+                         name: type.rawValue,
+                         turnoverNotches: ["Q"])
+        case .II:
+            return Rotor(mapping: "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+                         name: type.rawValue,
+                         turnoverNotches: ["E"])
+        case .III:
+            return Rotor(mapping: "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+                         name: type.rawValue,
+                         turnoverNotches: ["V"])
+        case .IV:
+            return Rotor(mapping: "ESOVPZJAYQUIRHXLNFTGKDCMWB",
+                         name: type.rawValue,
+                         turnoverNotches: ["J"])
+        case .V:
+            return Rotor(mapping: "VZBRGITYUPSDNHLXAWMJQOFECK",
+                         name: type.rawValue,
+                         turnoverNotches: ["Z"])
+        case .VI:
+            return Rotor(mapping: "JPGVOUMFYQBENHZRDKASXLICTW",
+                         name: type.rawValue,
+                         turnoverNotches: ["Z", "M"])
+        case .VII:
+            return Rotor(mapping: "NZJHGRCXMYSWBOUFAIVLPEKQDT",
+                         name: type.rawValue,
+                         turnoverNotches: ["Z", "M"])
+        case .VIII:
+            return Rotor(mapping: "FKQHTLXOCBJSPDZRAMEWNIUYGV",
+                         name: type.rawValue,
+                         turnoverNotches: ["Z", "M"])
+        case .Beta:
+            return Rotor(mapping: "LEYJVCNIXWPBQMDRTAKZGFUHOS",
+                         name: type.rawValue,
+                         turnoverNotches: [])
+        case .Gamma:
+            return Rotor(mapping: "FSOKANUERHMBTIYCWLQPZXVGJD",
+                         name: type.rawValue,
+                         turnoverNotches: [])
         }
-        return nil
     }
 
-    private func rotorWithData(data: [String: AnyObject], name: String) -> Rotor? {
-        guard let mapping = data["mapping"] as? [Int] else { return nil }
-        let turnover = data["turnover"] as? [Int] ?? []
-        return Rotor(mapping: mapping, name: name, turnoverNotches: turnover)
+    func loadReflectorOfType(type: ReflectorType) -> Rotor {
+        switch type {
+        case .B:
+            return Rotor(mapping: "YRUHQSLDPXNGOKMIEBFZCWVJAT",
+                         name: type.rawValue,
+                         turnoverNotches: [])
+        case .C:
+            return Rotor(mapping: "FVPJIAOYEDRZXWGCTKUQSBNMHL",
+                         name: type.rawValue,
+                         turnoverNotches: [])
+        case .ThinB:
+            return Rotor(mapping: "ENKQAUYWJICOPBLMDXZVFTHRGS",
+                         name: type.rawValue,
+                         turnoverNotches: [])
+        case .ThinC:
+            return Rotor(mapping: "RDOBJNTKVEHMLFCWZAXGYIPSUQ",
+                         name: type.rawValue,
+                         turnoverNotches: [])
+        }
     }
 }
