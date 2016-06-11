@@ -36,6 +36,19 @@ struct Rotor {
     }
 
     /**
+     Decypher a character through the rotors mapping. E.g. X -> A.
+
+     - parameter character: Input character.
+     - returns: Decyphered character.
+     */
+    func decypher(character: Character) -> Character {
+        let index = mapping.characters.indexOf(character)
+        let distance = mapping.startIndex.distanceTo(index!)
+        let offset = Character("A").unicodeScalarValue()
+        return Character(UnicodeScalar(offset + distance))
+    }
+
+    /**
      Advance the rotor.
      */
     mutating func turnRotor() {
@@ -58,7 +71,7 @@ struct Rotor {
     mutating func ringSetting(offset: Int) {
         assert(offset < 26 && offset > 0, "Ring offset should be between 0-25")
 
-        for _ in 0...offset {
+        for _ in 0..<offset {
             let index = mapping.endIndex.predecessor()
             let char = mapping.removeAtIndex(index)
             mapping.insert(char, atIndex: mapping.startIndex)
