@@ -21,23 +21,28 @@ class RotorTests: XCTestCase {
         XCTAssertEqual(rotor.name, rotorName)
     }
 
-    func test_ShouldTransformALetterThroughTheRotorsMapping() {
-        let character = rotor.transformCharacter("A")
+    func test_ShouldEncypherACharacter() {
+        let character = rotor.encypher("A")
         XCTAssertEqual(character, "Z")
+    }
+
+    func test_ShouldDecypherACharacter() {
+        let character = rotor.decypher("Z")
+        XCTAssertEqual(character, "A")
     }
 
     func test_ShouldIncrementMapping() {
         rotor.turnRotor()
 
-        let character = rotor.transformCharacter("A")
+        let character = rotor.encypher("A")
         XCTAssertEqual(character, "Y")
     }
 
     func test_ShouldAllowRingOffset() {
         rotor.ringSetting(2)
 
-        let character = rotor.transformCharacter("A")
-        XCTAssertEqual(character, "C")
+        let character = rotor.encypher("A")
+        XCTAssertEqual(character, "B")
     }
 
     func test_TurnoverNotchesShouldBeOptional() {

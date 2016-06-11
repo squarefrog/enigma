@@ -8,7 +8,7 @@ struct Rotor {
     var mapping: String
     let name: String
     let turnoverNotches: [Character]
-    private var rotorPosition = 0
+    var rotorPosition = 0
 
     /**
      Initialise a new Rotor object
@@ -24,11 +24,11 @@ struct Rotor {
     }
 
     /**
-     Run the passed in Character through the rotors mapping.
+     Encypher a character through the rotors mapping. E.g. A -> X.
      - parameter character: Input character.
-     - returns: Output character after being run through the rotors mapping.
+     - returns: Encyphered character.
      */
-    func transformCharacter(character: Character) -> Character? {
+    func encypher(character: Character) -> Character? {
         let offset = Character("A").unicodeScalarValue()
         let amount = character.unicodeScalarValue() - offset
         let index = mapping.startIndex.advancedBy(amount)
