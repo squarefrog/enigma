@@ -45,6 +45,23 @@ class RotorTests: XCTestCase {
         XCTAssertEqual(character, "B")
     }
 
+    func test_ShouldAllowSettingRotorOffset() {
+        rotor.rotorPosition = 2
+
+        let mapping = rotor.mapping
+
+        XCTAssertEqual(mapping, "XWVUTSRQPONMLKJIHGFEDCBAZY")
+    }
+
+    func test_ShouldWrapAroundRotorPosition() {
+        rotor.rotorPosition = 25
+        rotor.turnRotor()
+
+        let mapping = rotor.mapping
+
+        XCTAssertEqual(mapping, "ZYXWVUTSRQPONMLKJIHGFEDCBA")
+    }
+
     func test_TurnoverNotchesShouldBeOptional() {
         XCTAssertEqual(rotor.turnoverNotches, [])
     }

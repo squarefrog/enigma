@@ -8,7 +8,24 @@ struct Rotor {
     var mapping: String
     let name: String
     let turnoverNotches: [Character]
-    var rotorPosition = 0
+    var rotorPosition = 0 {
+        didSet {
+            let diff = max(rotorPosition - oldValue, 1)
+            for _ in 0..<diff {
+                let startIndex = mapping.startIndex
+                let char = mapping.removeAtIndex(startIndex)
+                mapping.append(char)
+            }
+        }
+    }
+    var shouldTurnover: Bool {
+        return turnoverNotches.contains(currentCharacter)
+    }
+    var currentCharacter: Character {
+        let offset = Character("A").unicodeScalarValue()
+        let char = offset + rotorPosition
+        return Character(UnicodeScalar(char))
+    }
 
     /**
      Initialise a new Rotor object
@@ -57,10 +74,6 @@ struct Rotor {
             return
         }
         rotorPosition += 1
-
-        let startIndex = mapping.startIndex
-        let char = mapping.removeAtIndex(startIndex)
-        mapping.append(char)
     }
 
     /**
