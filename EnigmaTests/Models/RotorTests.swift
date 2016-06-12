@@ -80,6 +80,16 @@ class RotorTests: XCTestCase {
         XCTAssertEqual(rotor.mapping, "ZYXWVUTSRQPONMLKJIHGFEDCBA")
     }
 
+    func test_ShouldAllowResettingAMappingAfterUsingRotorPositionAndRingSetting() {
+        rotor.rotorPosition = 3
+        rotor.ringSetting(4)
+        XCTAssertEqual(rotor.mapping, "AZYXWVUTSRQPONMLKJIHGFEDCB")
+
+        rotor.resetMapping()
+
+        XCTAssertEqual(rotor.mapping, "ZYXWVUTSRQPONMLKJIHGFEDCBA")
+    }
+
     func test_TurnoverNotchesShouldBeOptional() {
         XCTAssertEqual(rotor.turnoverNotches, [])
     }
