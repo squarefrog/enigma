@@ -22,7 +22,12 @@ struct Rotor {
         let char = offset + rotorPosition
         return Character(UnicodeScalar(char))
     }
-    private var currentRingSetting: Int = 0
+    private var currentRingSetting: Int = 0 {
+        didSet {
+            incrementMapping(byAmount: oldValue)
+            decrementMapping(byAmount: currentRingSetting)
+        }
+    }
 
     // MARK: - Public API
 
@@ -81,14 +86,12 @@ struct Rotor {
      - parameter offset: The ring setting for the rotor.
      */
     mutating func ringSetting(offset: Int) {
-        assert(offset < 26 && offset > 0, "Ring offset should be between 0-25")
-        currentRingSetting = offset
-        decrementMapping(byAmount: offset)
+        currentRingSetting = max(offset % 25, 0)
     }
 
     mutating func resetMapping() {
         decrementMapping(byAmount: rotorPosition)
-        incrementMapping(byAmount: currentRingSetting)
+        currentRingSetting = 0
     }
 
     // MARK: - Private API
