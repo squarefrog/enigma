@@ -5,13 +5,19 @@ import Foundation
  */
 struct Rotor {
 
+    // MARK: - Properties
+
     var mapping: String
     let name: String
     let turnoverNotches: [Character]
     var rotorPosition = 0 {
         didSet {
-            let diff = max(rotorPosition - oldValue, 1)
-            incrementMapping(byAmount: diff)
+            let diff = rotorPosition - oldValue
+            if diff < 1 {
+                decrementMapping(byAmount: abs(diff))
+            } else {
+                incrementMapping(byAmount: diff)
+            }
         }
     }
     var shouldTurnover: Bool {

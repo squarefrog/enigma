@@ -69,6 +69,15 @@ class RotorTests: XCTestCase {
         XCTAssertEqual(mapping, "ZYXWVUTSRQPONMLKJIHGFEDCBA")
     }
 
+    func test_ShouldBehaveWhenSettingRotorPositionTwice() {
+        rotor.rotorPosition = 6
+        rotor.rotorPosition = 2
+
+        let mapping = rotor.mapping
+
+        XCTAssertEqual(mapping, "XWVUTSRQPONMLKJIHGFEDCBAZY")
+    }
+
     func test_ShouldAllowResettingAMappingAfterUsingRotorPosition() {
         rotor.rotorPosition = 4
         XCTAssertEqual(rotor.mapping, "VUTSRQPONMLKJIHGFEDCBAZYXW")
