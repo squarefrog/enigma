@@ -1,5 +1,13 @@
 import Foundation
 
+
+extension String {
+    func stripUnwantedCharacters() -> String {
+        let allowed: Set<Character> = Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters)
+        return String(self.uppercaseString.characters.filter { allowed.contains($0) })
+    }
+}
+
 /**
  Thrown when the `Plugboard` was unable to create a connection.
 
@@ -72,6 +80,7 @@ struct Plugboard {
          uneven.
      */
     mutating func createConnectionsWithString(connections: String) throws {
+        let connections = connections.stripUnwantedCharacters()
         guard connections.characters.count % 2 == 0 else {
             throw PlugboardError.UnevenConnections
         }

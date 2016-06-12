@@ -110,4 +110,15 @@ class PlugboardTests: XCTestCase {
             try self.plugboard.createConnectionsWithString(pairs)
         }
     }
+
+    func test_ShouldCreateConnectionsFromACleansedString() {
+        let string = ".A z=-34"
+
+        try! plugboard.createConnectionsWithString(string)
+
+        let expected = [
+            Connection(startPoint: "A", endPoint: "Z")
+        ]
+        XCTAssertEqual(plugboard.connections, expected)
+    }
 }
