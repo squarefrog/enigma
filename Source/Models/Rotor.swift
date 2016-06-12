@@ -11,11 +11,7 @@ struct Rotor {
     var rotorPosition = 0 {
         didSet {
             let diff = max(rotorPosition - oldValue, 1)
-            for _ in 0..<diff {
-                let startIndex = mapping.startIndex
-                let char = mapping.removeAtIndex(startIndex)
-                mapping.append(char)
-            }
+            incrementMapping(byAmount: diff)
         }
     }
     var shouldTurnover: Bool {
@@ -26,6 +22,9 @@ struct Rotor {
         let char = offset + rotorPosition
         return Character(UnicodeScalar(char))
     }
+    private var currentRingSetting: Int = 0
+
+    // MARK: - Public API
 
     /**
      Initialise a new Rotor object
@@ -83,11 +82,30 @@ struct Rotor {
      */
     mutating func ringSetting(offset: Int) {
         assert(offset < 26 && offset > 0, "Ring offset should be between 0-25")
+        currentRingSetting = offset
+        decrementMapping(byAmount: offset)
+    }
 
-        for _ in 0..<offset {
-            let index = mapping.endIndex.predecessor()
-            let char = mapping.removeAtIndex(index)
+    mutating func resetMapping() {
+        decrementMapping(byAmount: rotorPosition)
+        incrementMapping(byAmount: currentRingSetting)
+    }
+
+    // MARK: - Private API
+
+    private mutating func decrementMapping(byAmount offsetAmount: Int) {
+        for _ in 0..<offsetAmount {
+            let endIndex = mapping.endIndex.predecessor()
+            let char = mapping.removeAtIndex(endIndex)
             mapping.insert(char, atIndex: mapping.startIndex)
+        }
+    }
+
+    private mutating func incrementMapping(byAmount offsetAmount: Int) {
+        for _ in 0..<offsetAmount {
+            let startIndex = mapping.startIndex
+            let char = mapping.removeAtIndex(startIndex)
+            mapping.append(char)
         }
     }
 }
