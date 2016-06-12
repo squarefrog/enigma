@@ -89,4 +89,25 @@ class PlugboardTests: XCTestCase {
 
         XCTAssertEqual("A", "A")
     }
+
+    func test_ShouldCreateConnectionsFromString() {
+        let string = "AZBY"
+
+        try! plugboard.createConnectionsWithString(string)
+
+        let expected = [
+            Connection(startPoint: "A", endPoint: "Z"),
+            Connection(startPoint: "B", endPoint: "Y")
+        ]
+        XCTAssertEqual(plugboard.connections, expected)
+    }
+
+    func test_ShouldRaiseWhenGivenUnevenPairString() {
+        let pairs = "AZB"
+
+        XCTAssertThrowsSpecificError(PlugboardError.UnevenConnections) {
+            [unowned self]  in
+            try self.plugboard.createConnectionsWithString(pairs)
+        }
+    }
 }
