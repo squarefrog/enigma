@@ -71,7 +71,7 @@ struct RotorSet {
     mutating func encypher(character: Character) -> Character {
         var char = character
 
-        firstRotor?.turnRotor()
+        turnRotors()
 
         for rotor in allRotors() {
             if let encyphered = rotor.encypher(char) {
@@ -89,6 +89,28 @@ struct RotorSet {
         }
 
         return char
+    }
+
+    /**
+     Each time a letter key is pressed, the first rotor turns over. Cycle
+     through each rotor to see if it needs to turn over the next rotor. This has
+     to be done in reverse, so it doesn't interfere with the turnover state of
+     the rotor to the right.
+     */
+    private mutating func turnRotors() {
+        if thirdRotor?.shouldTurnover == true {
+            fourthRotor?.turnRotor()
+        }
+
+        if secondRotor?.shouldTurnover == true {
+            thirdRotor?.turnRotor()
+        }
+
+        if firstRotor?.shouldTurnover == true {
+            secondRotor?.turnRotor()
+        }
+
+        firstRotor?.turnRotor()
     }
 
     /**

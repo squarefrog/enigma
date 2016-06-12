@@ -94,6 +94,20 @@ class RotorSetTests: XCTestCase {
         XCTAssertEqual(encyphered, "BDZGO")
     }
 
+    func test_ShouldRotateRotorsWhenRequired() {
+        loadRotors()
+        // Rotor III turnover = V
+        rotorSet.firstRotor?.rotorPosition = 21
+        // Rotor II turnover = E
+        rotorSet.secondRotor?.rotorPosition = 4
+        // Rotor I turnover = Q
+        rotorSet.thirdRotor?.rotorPosition = 16
+
+        let encyphered = rotorSet.encypherString("AB")
+
+        XCTAssertEqual(encyphered, "LO")
+    }
+
     private func loadRotors() {
         try! rotorSet.loadRotorType(.I, position: .Third)
         try! rotorSet.loadRotorType(.II, position: .Second)
