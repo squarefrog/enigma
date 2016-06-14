@@ -9,30 +9,14 @@ struct Rotor {
 
     var mapping: String
     let name: String
-    let turnoverNotches: [Character]
-    var rotorPosition = 0 {
-        didSet {
-            let diff = rotorPosition - oldValue
-            if diff < 1 {
-                decrementMapping(byAmount: abs(diff))
-            } else {
-                incrementMapping(byAmount: diff)
-            }
-        }
-    }
+    var rotorPosition = 0
     var shouldTurnover: Bool {
-        return turnoverNotches.contains(currentCharacter)
+        return turnoverNotches.contains(mappingOffset)
     }
-    var currentCharacter: Character {
-        let offset = Character("A").unicodeScalarValue()
-        let char = offset + rotorPosition
-        return Character(UnicodeScalar(char))
-    }
-    private var currentRingSetting: Int = 0 {
-        didSet {
-            incrementMapping(byAmount: oldValue)
-            decrementMapping(byAmount: currentRingSetting)
-        }
+    private let turnoverNotches: [Int]
+    private var currentRingSetting: Int = 0
+    private var mappingOffset: Int {
+        return (rotorPosition + (26 - currentRingSetting)) % 26
     }
 
     // MARK: - Public API
@@ -47,7 +31,11 @@ struct Rotor {
     init(mapping: String, name: String, turnoverNotches: [Character] = []) {
         self.mapping = mapping
         self.name = name
-        self.turnoverNotches = turnoverNotches
+        self.turnoverNotches = turnoverNotches.map({ (char) -> Int in
+            let alphabetStartValue = Character("A").unicodeScalarValue()
+            let index = char.unicodeScalarValue()
+            return Int(index - alphabetStartValue)
+        })
     }
 
     /**
@@ -56,9 +44,10 @@ struct Rotor {
      - returns: Encyphered character.
      */
     func encypher(character: Character) -> Character? {
-        let offset = Character("A").unicodeScalarValue()
-        let amount = character.unicodeScalarValue() - offset
-        let index = mapping.startIndex.advancedBy(amount)
+        let alphabetStartValue = Character("A").unicodeScalarValue()
+        let charValue = character.unicodeScalarValue() - alphabetStartValue
+        let encypheredIndex = Int((charValue + mappingOffset) % 26)
+        let index = mapping.startIndex.advancedBy(encypheredIndex)
         return mapping[index]
     }
 
@@ -71,8 +60,12 @@ struct Rotor {
     func decypher(character: Character) -> Character {
         let index = mapping.characters.indexOf(character)
         let distance = mapping.startIndex.distanceTo(index!)
-        let offset = Character("A").unicodeScalarValue()
-        return Character(UnicodeScalar(offset + distance))
+        var offset = distance - (mappingOffset % 26)
+        if offset < 0 {
+            offset += 26
+        }
+        let alphabetStartValue = Character("A").unicodeScalarValue()
+        return Character(UnicodeScalar(alphabetStartValue + offset))
     }
 
     /**
@@ -96,26 +89,8 @@ struct Rotor {
     }
 
     mutating func resetMapping() {
-        decrementMapping(byAmount: rotorPosition)
+        rotorPosition = 0
         currentRingSetting = 0
-    }
-
-    // MARK: - Private API
-
-    private mutating func decrementMapping(byAmount offsetAmount: Int) {
-        for _ in 0..<offsetAmount {
-            let endIndex = mapping.endIndex.predecessor()
-            let char = mapping.removeAtIndex(endIndex)
-            mapping.insert(char, atIndex: mapping.startIndex)
-        }
-    }
-
-    private mutating func incrementMapping(byAmount offsetAmount: Int) {
-        for _ in 0..<offsetAmount {
-            let startIndex = mapping.startIndex
-            let char = mapping.removeAtIndex(startIndex)
-            mapping.append(char)
-        }
     }
 }
 

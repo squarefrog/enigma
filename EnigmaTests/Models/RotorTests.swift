@@ -52,99 +52,86 @@ class RotorTests: XCTestCase {
 
     // MARK: - Rotor Position
 
-    func test_ShouldAllowSettingRotorOffset() {
+    func test_ShouldEncypherWithRotorPosition() {
         rotor.rotorPosition = 2
 
-        let mapping = rotor.mapping
+        let character = rotor.encypher("A")
+        XCTAssertEqual(character, "X")
+    }
 
-        XCTAssertEqual(mapping, "XWVUTSRQPONMLKJIHGFEDCBAZY")
+    func test_ShouldDecypherWithRotorPosition() {
+        rotor.rotorPosition = 2
+
+        let character = rotor.decypher("X")
+        XCTAssertEqual(character, "A")
+    }
+
+    func test_ShouldDecypherWithHigherRotorPosition() {
+        rotor.rotorPosition = 3
+
+        let character = rotor.decypher("X")
+        XCTAssertEqual(character, "Z")
     }
 
     func test_ShouldWrapAroundRotorPosition() {
         rotor.rotorPosition = 25
+        XCTAssertEqual(rotor.encypher("A"), "A")
+
         rotor.turnRotor()
 
-        let mapping = rotor.mapping
-
-        XCTAssertEqual(mapping, "ZYXWVUTSRQPONMLKJIHGFEDCBA")
-    }
-
-    func test_ShouldBehaveWhenSettingRotorPositionTwice() {
-        rotor.rotorPosition = 6
-        rotor.rotorPosition = 2
-
-        let mapping = rotor.mapping
-
-        XCTAssertEqual(mapping, "XWVUTSRQPONMLKJIHGFEDCBAZY")
-    }
-
-    func test_ShouldAllowResettingAMappingAfterUsingRotorPosition() {
-        rotor.rotorPosition = 4
-        XCTAssertEqual(rotor.mapping, "VUTSRQPONMLKJIHGFEDCBAZYXW")
-
-        rotor.resetMapping()
-
-        XCTAssertEqual(rotor.mapping, "ZYXWVUTSRQPONMLKJIHGFEDCBA")
+        XCTAssertEqual(rotor.encypher("A"), "Z")
     }
 
     // MARK: - Ring Setting
 
-    func test_ShouldAllowRingOffset() {
+    func test_ShouldEncypherWithRingSetting() {
         rotor.ringSetting(2)
 
         let character = rotor.encypher("A")
         XCTAssertEqual(character, "B")
     }
 
-    func test_ShouldAllowResettingAMappingAfterUsingRingSetting() {
-        rotor.ringSetting(4)
-        XCTAssertEqual(rotor.mapping, "DCBAZYXWVUTSRQPONMLKJIHGFE")
+    func test_ShouldDecypherWithRingSetting() {
+        rotor.ringSetting(2)
 
-        rotor.resetMapping()
-
-        XCTAssertEqual(rotor.mapping, "ZYXWVUTSRQPONMLKJIHGFEDCBA")
+        let character = rotor.encypher("B")
+        XCTAssertEqual(character, "A")
     }
 
-    func test_ShouldAllowResettingAMappingAfterUsingRotorPositionAndRingSetting() {
-        rotor.rotorPosition = 3
-        rotor.ringSetting(4)
-        XCTAssertEqual(rotor.mapping, "AZYXWVUTSRQPONMLKJIHGFEDCB")
+    func test_EqualRingAndRotorPositionsShouldCancelOut() {
+        rotor.ringSetting(2)
+        rotor.rotorPosition = 2
 
-        rotor.resetMapping()
+        let character = rotor.encypher("A")
 
-        XCTAssertEqual(rotor.mapping, "ZYXWVUTSRQPONMLKJIHGFEDCBA")
-    }
-
-    func test_ShouldShouldResetBeforeChangingRingSetting() {
-        rotor.ringSetting(4)
-
-        rotor.ringSetting(1)
-
-        XCTAssertEqual(rotor.mapping, "AZYXWVUTSRQPONMLKJIHGFEDCB")
-    }
-
-    func test_ShouldNotCrashWhenRingSettingIsNegative() {
-        rotor.ringSetting(-1)
-        XCTAssertEqual(rotor.mapping, "ZYXWVUTSRQPONMLKJIHGFEDCBA")
-    }
-
-    func test_ShouldNotCrashWhenRingSettingIsTooHigh() {
-        rotor.ringSetting(26)
-        XCTAssertEqual(rotor.mapping, "AZYXWVUTSRQPONMLKJIHGFEDCB")
+        XCTAssertEqual(character, "Z")
     }
 
     // MARK: - Turnover Setting
 
-    func test_TurnoverNotchesShouldBeOptional() {
-        XCTAssertEqual(rotor.turnoverNotches, [])
-    }
-
-    func test_TurnoverNotchesShouldBeReturned() {
-        let notches: [Character] = [ "Z", "M" ]
+    func test_ShouldStateWhenReadyToTurnover() {
         rotor = Rotor(mapping: mapping,
                       name: rotorName,
-                      turnoverNotches: notches)
+                      turnoverNotches: ["A"])
 
-        XCTAssertEqual(rotor.turnoverNotches, notches)
+        XCTAssertTrue(rotor.shouldTurnover)
+    }
+
+    func test_ShouldTurnoverWhenUsingRotorPosition() {
+        rotor = Rotor(mapping: mapping,
+                      name: rotorName,
+                      turnoverNotches: ["B"])
+        rotor.rotorPosition = 1
+
+        XCTAssertTrue(rotor.shouldTurnover)
+    }
+
+    func test_ShouldTurnoverWhenUsingRingSetting() {
+        rotor = Rotor(mapping: mapping,
+                      name: rotorName,
+                      turnoverNotches: ["Z"])
+        rotor.ringSetting(1)
+
+        XCTAssertTrue(rotor.shouldTurnover)
     }
 }
