@@ -1,6 +1,13 @@
 import XCTest
 @testable import Enigma
 
+extension Character {
+    var alphabetValue: Int {
+        let startValue = Character("A").unicodeScalarValue()
+        return self.unicodeScalarValue() - startValue
+    }
+}
+
 class RotorBoxTests: XCTestCase {
 
     var dataLoader: RotorBox!
@@ -17,58 +24,66 @@ class RotorBoxTests: XCTestCase {
 
     func test_ShouldCreateRotorOfTypeI() {
         let rotor = dataLoader.loadRotorOfType(.I)
-
         XCTAssertEqual(rotor.mapping, "EKMFLGDQVZNTOWYHXUSPAIBRCJ")
-        XCTAssertEqual(rotor.turnoverNotches, ["Q"])
+
+        let notches = [ Character("Q").alphabetValue ]
+        XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
     func test_ShouldCreateRotorOfTypeII() {
         let rotor = dataLoader.loadRotorOfType(.II)
-
         XCTAssertEqual(rotor.mapping, "AJDKSIRUXBLHWTMCQGZNPYFVOE")
-        XCTAssertEqual(rotor.turnoverNotches, ["E"])
+
+        let notches = [ Character("E").alphabetValue ]
+        XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
     func test_ShouldCreateRotorOfTypeIII() {
         let rotor = dataLoader.loadRotorOfType(.III)
-
         XCTAssertEqual(rotor.mapping, "BDFHJLCPRTXVZNYEIWGAKMUSQO")
-        XCTAssertEqual(rotor.turnoverNotches, ["V"])
+
+        let notches = [ Character("V").alphabetValue ]
+        XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
     func test_ShouldCreateRotorOfTypeIV() {
         let rotor = dataLoader.loadRotorOfType(.IV)
-
         XCTAssertEqual(rotor.mapping, "ESOVPZJAYQUIRHXLNFTGKDCMWB")
-        XCTAssertEqual(rotor.turnoverNotches, ["J"])
+
+        let notches = [ Character("J").alphabetValue ]
+        XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
     func test_ShouldCreateRotorOfTypeV() {
         let rotor = dataLoader.loadRotorOfType(.V)
-
         XCTAssertEqual(rotor.mapping, "VZBRGITYUPSDNHLXAWMJQOFECK")
-        XCTAssertEqual(rotor.turnoverNotches, ["Z"])
+
+        let notches = [ Character("Z").alphabetValue ]
+        XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
     func test_ShouldCreateRotorOfTypeVI() {
         let rotor = dataLoader.loadRotorOfType(.VI)
-
         XCTAssertEqual(rotor.mapping, "JPGVOUMFYQBENHZRDKASXLICTW")
-        XCTAssertEqual(rotor.turnoverNotches, ["Z", "M"])
+
+        let notches = [Character("Z").alphabetValue, Character("M").alphabetValue]
+        XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
     func test_ShouldCreateRotorOfTypeVII() {
         let rotor = dataLoader.loadRotorOfType(.VII)
-
         XCTAssertEqual(rotor.mapping, "NZJHGRCXMYSWBOUFAIVLPEKQDT")
-        XCTAssertEqual(rotor.turnoverNotches, ["Z", "M"])
+
+        let notches = [Character("Z").alphabetValue, Character("M").alphabetValue]
+        XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
     func test_ShouldCreateRotorOfTypeVIII() {
         let rotor = dataLoader.loadRotorOfType(.VIII)
-
         XCTAssertEqual(rotor.mapping, "FKQHTLXOCBJSPDZRAMEWNIUYGV")
-        XCTAssertEqual(rotor.turnoverNotches, ["Z", "M"])
+
+        let notches = [Character("Z").alphabetValue, Character("M").alphabetValue]
+        XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
     func test_ShouldCreateRotorOfTypeBeta() {
