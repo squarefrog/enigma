@@ -1,13 +1,6 @@
 import XCTest
 @testable import Enigma
 
-extension Character {
-    var alphabetValue: Int {
-        let startValue = Character("A").unicodeScalarValue()
-        return self.unicodeScalarValue() - startValue
-    }
-}
-
 class RotorBoxTests: XCTestCase {
 
     var dataLoader: RotorBox!
@@ -26,7 +19,7 @@ class RotorBoxTests: XCTestCase {
         let rotor = dataLoader.loadRotorOfType(.I)
         XCTAssertEqual(rotor.mapping, "EKMFLGDQVZNTOWYHXUSPAIBRCJ")
 
-        let notches = [ Character("Q").alphabetValue ]
+        let notches = [Character("Q").alphabetIndex]
         XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
@@ -34,7 +27,7 @@ class RotorBoxTests: XCTestCase {
         let rotor = dataLoader.loadRotorOfType(.II)
         XCTAssertEqual(rotor.mapping, "AJDKSIRUXBLHWTMCQGZNPYFVOE")
 
-        let notches = [ Character("E").alphabetValue ]
+        let notches = [Character("E").alphabetIndex]
         XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
@@ -42,7 +35,7 @@ class RotorBoxTests: XCTestCase {
         let rotor = dataLoader.loadRotorOfType(.III)
         XCTAssertEqual(rotor.mapping, "BDFHJLCPRTXVZNYEIWGAKMUSQO")
 
-        let notches = [ Character("V").alphabetValue ]
+        let notches = [Character("V").alphabetIndex]
         XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
@@ -50,7 +43,7 @@ class RotorBoxTests: XCTestCase {
         let rotor = dataLoader.loadRotorOfType(.IV)
         XCTAssertEqual(rotor.mapping, "ESOVPZJAYQUIRHXLNFTGKDCMWB")
 
-        let notches = [ Character("J").alphabetValue ]
+        let notches = [Character("J").alphabetIndex]
         XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
@@ -58,7 +51,7 @@ class RotorBoxTests: XCTestCase {
         let rotor = dataLoader.loadRotorOfType(.V)
         XCTAssertEqual(rotor.mapping, "VZBRGITYUPSDNHLXAWMJQOFECK")
 
-        let notches = [ Character("Z").alphabetValue ]
+        let notches = [Character("Z").alphabetIndex]
         XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
@@ -66,7 +59,7 @@ class RotorBoxTests: XCTestCase {
         let rotor = dataLoader.loadRotorOfType(.VI)
         XCTAssertEqual(rotor.mapping, "JPGVOUMFYQBENHZRDKASXLICTW")
 
-        let notches = [Character("Z").alphabetValue, Character("M").alphabetValue]
+        let notches = [Character("Z").alphabetIndex, Character("M").alphabetIndex]
         XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
@@ -74,7 +67,7 @@ class RotorBoxTests: XCTestCase {
         let rotor = dataLoader.loadRotorOfType(.VII)
         XCTAssertEqual(rotor.mapping, "NZJHGRCXMYSWBOUFAIVLPEKQDT")
 
-        let notches = [Character("Z").alphabetValue, Character("M").alphabetValue]
+        let notches = [Character("Z").alphabetIndex, Character("M").alphabetIndex]
         XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
@@ -82,7 +75,7 @@ class RotorBoxTests: XCTestCase {
         let rotor = dataLoader.loadRotorOfType(.VIII)
         XCTAssertEqual(rotor.mapping, "FKQHTLXOCBJSPDZRAMEWNIUYGV")
 
-        let notches = [Character("Z").alphabetValue, Character("M").alphabetValue]
+        let notches = [Character("Z").alphabetIndex, Character("M").alphabetIndex]
         XCTAssertEqual(rotor.turnoverNotches, notches)
     }
 
@@ -126,18 +119,5 @@ class RotorBoxTests: XCTestCase {
 
         XCTAssertEqual(rotor.mapping, "RDOBJNTKVEHMLFCWZAXGYIPSUQ")
         XCTAssertEqual(rotor.turnoverNotches, [])
-    }
-
-    // MARK: - Test Helpers
-
-    private func createAlphaFromMapping(mapping: [Int]) -> String {
-        var mappingString = ""
-        let offset = Character("A").unicodeScalarValue()
-        for code in mapping {
-            let letter = String(format: "%c", code + offset)
-            mappingString = mappingString + letter
-        }
-
-        return mappingString
     }
 }

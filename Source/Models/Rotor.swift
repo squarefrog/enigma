@@ -31,11 +31,7 @@ struct Rotor {
     init(mapping: String, name: String, turnoverNotches: [Character] = []) {
         self.mapping = mapping
         self.name = name
-        self.turnoverNotches = turnoverNotches.map({ (char) -> Int in
-            let alphabetStartValue = Character("A").unicodeScalarValue()
-            let index = char.unicodeScalarValue()
-            return Int(index - alphabetStartValue)
-        })
+        self.turnoverNotches = turnoverNotches.map { $0.alphabetIndex }
     }
 
     /**
@@ -44,11 +40,10 @@ struct Rotor {
      - returns: Encyphered character.
      */
     func encypher(character: Character) -> Character? {
-        let alphabetStartValue = Character("A").unicodeScalarValue()
-        let charValue = character.unicodeScalarValue() - alphabetStartValue
+        let charValue = character.alphabetIndex
         let encypheredIndex = Int((charValue + mappingOffset) % 26)
-        let index = mapping.startIndex.advancedBy(encypheredIndex)
-        return mapping[index]
+        let mappingIndex = mapping.startIndex.advancedBy(encypheredIndex)
+        return mapping[mappingIndex]
     }
 
     /**
@@ -88,6 +83,9 @@ struct Rotor {
         currentRingSetting = max(offset % 25, 0)
     }
 
+    /**
+     Reset the rotor position and ring setting to zero.
+     */
     mutating func resetMapping() {
         rotorPosition = 0
         currentRingSetting = 0

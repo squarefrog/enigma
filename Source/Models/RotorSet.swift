@@ -6,14 +6,12 @@ enum RotorSetError: ErrorType {
 
 extension Character {
     func offsetBy(amount: Int) -> Character {
-        let offset = Character("A").unicodeScalarValue()
-        let value = self.unicodeScalarValue()
-        var normalised = value - offset - amount
+        var normalised = self.alphabetIndex - amount
         if normalised < 0 {
             normalised += 26
         }
-
-        return Character(UnicodeScalar(normalised % 26 + offset))
+        let alphabetStartIndex = Character("A").unicodeScalarValue()
+        return Character(UnicodeScalar(normalised % 26 + alphabetStartIndex))
     }
 }
 
@@ -39,7 +37,7 @@ struct RotorSet {
     mutating func loadRotorType(type: RotorType, position: RotorPosition) throws {
         let rotor = rotorBox.loadRotorOfType(type)
 
-        for loadedRotor in [ firstRotor, secondRotor, thirdRotor, fourthRotor ] {
+        for loadedRotor in [firstRotor, secondRotor, thirdRotor, fourthRotor] {
             if rotor == loadedRotor {
                 throw RotorSetError.RotorAlreadyUsed
             }
