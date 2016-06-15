@@ -73,7 +73,7 @@ struct RotorSet {
 
         for rotor in allRotors() {
             if let encyphered = rotor.encypher(char) {
-                char = encyphered.offsetBy(rotor.rotorPosition)
+                char = encyphered.offsetBy(rotor.mappingOffset)
             }
         }
 
@@ -82,8 +82,8 @@ struct RotorSet {
         }
 
         for rotor in allRotors().reverse() {
-            let offsetChar = char.offsetBy(-rotor.rotorPosition)
-            char = rotor.decypher(offsetChar)
+            char = char.offsetBy(-rotor.mappingOffset)
+            char = rotor.decypher(char)
         }
 
         return char
@@ -103,7 +103,6 @@ struct RotorSet {
         if secondRotor?.shouldTurnover == true {
             thirdRotor?.turnRotor()
         }
-
         if firstRotor?.shouldTurnover == true {
             secondRotor?.turnRotor()
         }

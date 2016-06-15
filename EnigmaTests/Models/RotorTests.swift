@@ -131,6 +131,7 @@ class RotorTests: XCTestCase {
                       name: rotorName,
                       turnoverNotches: ["Z"])
         rotor.ringSetting(1)
+        rotor.rotorPosition = 25
 
         XCTAssertTrue(rotor.shouldTurnover)
     }

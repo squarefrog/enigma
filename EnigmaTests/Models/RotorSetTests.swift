@@ -86,6 +86,20 @@ class RotorSetTests: XCTestCase {
         XCTAssertEqual(encyphered, Character("B"))
     }
 
+    func test_ShouldEncypherLetterThroughRotorsWithSettings() {
+        loadRotors()
+        rotorSet.firstRotor?.rotorPosition = 1
+        rotorSet.firstRotor?.ringSetting(2)
+        rotorSet.secondRotor?.rotorPosition = 1
+        rotorSet.secondRotor?.ringSetting(2)
+        rotorSet.thirdRotor?.rotorPosition = 1
+        rotorSet.thirdRotor?.ringSetting(2)
+
+        let encyphered = rotorSet.encypher(Character("A"))
+
+        XCTAssertEqual(encyphered, Character("E"))
+    }
+
     func test_ShouldEncypherAString() {
         loadRotors()
 

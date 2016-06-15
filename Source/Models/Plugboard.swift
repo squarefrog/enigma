@@ -1,13 +1,25 @@
 import Foundation
 
-// MARK: - Plugboard
 
+extension String {
+    func stripUnwantedCharacters() -> String {
+        let allowed: Set<Character> = Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters)
+        return String(self.uppercaseString.characters.filter { allowed.contains($0) })
+    }
+}
+
+/**
+ Thrown when the `Plugboard` was unable to create a connection.
+
+ - OutOfConnections:  Creating the connection exceeded the maximum of 10
+     connections.
+ - InvalidConnection: One or more of the pairs is already in use.
+ - UnevenConnections: String-based connections must be supplied in pairs.
+ */
 enum PlugboardError: ErrorType {
-    /**
-     *  The plugboard has a maximum of 10 connections.
-     */
     case OutOfConnections
     case InvalidConnection
+    case UnevenConnections
 }
 
 /**
@@ -15,12 +27,13 @@ enum PlugboardError: ErrorType {
  */
 struct Plugboard {
 
+    /// An array of connection mappings
     var connections: [Connection] = []
 
     /**
      Pass a key through the plugboard.
-     - parameter input: The input alpha code to passthrough.
-     - returns: The output alpha code, transformed if necessary.
+     - parameter input: The character to passthrough.
+     - returns: The transformed character.
      */
     func passthrough(input: Character) -> Character {
         if let connection = connectionForCharacter(input) {
@@ -40,17 +53,44 @@ struct Plugboard {
             throw PlugboardError.OutOfConnections
         }
 
-        guard connectionForCharacter(connection.startPoint) == nil &&
-            connectionForCharacter(connection.endPoint) == nil else {
+        guard
+            connectionForCharacter(connection.startPoint) == nil &&
+            connectionForCharacter(connection.endPoint) == nil
+            else {
                 throw PlugboardError.InvalidConnection
         }
 
         connections.append(connection)
     }
 
+    /**
+     Remove a connection.
+     - parameter connection: The connection to be removed.
+     */
     mutating func destroyConnection(connection: Connection) {
         if let index = connections.indexOf({ $0 == connection }) {
             connections.removeAtIndex(index)
+        }
+    }
+
+    /**
+     Create a series of connections from a string of character pairs.
+     - parameter connections: A string of character pairs.
+     - throws: If connection cannot be created, or if the input string is
+         uneven.
+     */
+    mutating func createConnectionsWithString(connections: String) throws {
+        let connections = connections.stripUnwantedCharacters()
+        guard connections.characters.count % 2 == 0 else {
+            throw PlugboardError.UnevenConnections
+        }
+
+        let characters = connections.characters
+        let count = characters.count
+        try 0.stride(to: count, by: 2).forEach {
+            let a = connections[connections.startIndex.advancedBy($0)]
+            let b = connections[connections.startIndex.advancedBy($0 + 1)]
+            try self.createConnection(Connection(startPoint: a, endPoint: b))
         }
     }
 
@@ -74,10 +114,6 @@ struct Plugboard {
             return c.startPoint == character || c.endPoint == character
         }
 
-        if let connection = filteredConnections.first {
-            return connection
-        }
-
-        return nil
+        return filteredConnections.first
     }
 }
