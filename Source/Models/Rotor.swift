@@ -12,10 +12,10 @@ struct Rotor {
     let name: String
     var rotorPosition = 0
     var shouldTurnover: Bool {
-        return turnoverNotches.contains(mappingOffset)
+        return turnoverNotches.contains(rotorPosition)
     }
-    private var currentRingSetting: Int = 0
-    private var mappingOffset: Int {
+    var currentRingSetting: Int = 0
+    var mappingOffset: Int {
         return (rotorPosition + (26 - currentRingSetting)) % 26
     }
 

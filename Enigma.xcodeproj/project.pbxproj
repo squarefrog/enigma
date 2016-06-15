@@ -18,6 +18,8 @@
 		0EC88B741CD0B31300A707BE /* Rotor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC88B731CD0B31300A707BE /* Rotor.swift */; };
 		0EC88B781CD0B35D00A707BE /* RotorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC88B771CD0B35D00A707BE /* RotorTests.swift */; };
 		0EE0F3B51D108E7D00353B04 /* Character+alphabetIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE0F3B41D108E7D00353B04 /* Character+alphabetIndex.swift */; };
+		0ED720FD1D0D853E00F68CDF /* Enigma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED720FC1D0D853E00F68CDF /* Enigma.swift */; };
+		0ED720FF1D0D857300F68CDF /* EnigmaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED720FE1D0D857300F68CDF /* EnigmaTests.swift */; };
 		0EF1F30A1CD2320F00B922C4 /* RotorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3091CD2320F00B922C4 /* RotorSet.swift */; };
 		0EF1F30C1CD2325000B922C4 /* RotorSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F30B1CD2325000B922C4 /* RotorSetTests.swift */; };
 		0EF1F3111CD2455800B922C4 /* RotorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3101CD2455800B922C4 /* RotorType.swift */; };
@@ -55,6 +57,8 @@
 		0EC88B731CD0B31300A707BE /* Rotor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rotor.swift; sourceTree = "<group>"; };
 		0EC88B771CD0B35D00A707BE /* RotorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorTests.swift; sourceTree = "<group>"; };
 		0EE0F3B41D108E7D00353B04 /* Character+alphabetIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+alphabetIndex.swift"; sourceTree = "<group>"; };
+		0ED720FC1D0D853E00F68CDF /* Enigma.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enigma.swift; sourceTree = "<group>"; };
+		0ED720FE1D0D857300F68CDF /* EnigmaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaTests.swift; sourceTree = "<group>"; };
 		0EF1F3091CD2320F00B922C4 /* RotorSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorSet.swift; sourceTree = "<group>"; };
 		0EF1F30B1CD2325000B922C4 /* RotorSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorSetTests.swift; sourceTree = "<group>"; };
 		0EF1F3101CD2455800B922C4 /* RotorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorType.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 		0E35FB861CCFD0EC001B10E0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0ED720FE1D0D857300F68CDF /* EnigmaTests.swift */,
 				0E35FB881CCFD128001B10E0 /* PlugboardTests.swift */,
 				0EF1F34B1CD3D8FC00B922C4 /* RotorBoxTests.swift */,
 				0EF1F30B1CD2325000B922C4 /* RotorSetTests.swift */,
@@ -160,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				0E13E3451CD00155004CEEC3 /* Connection.swift */,
+				0ED720FC1D0D853E00F68CDF /* Enigma.swift */,
 				0EF1F30F1CD2453400B922C4 /* Enums */,
 				0E35FB841CCFD0D7001B10E0 /* Plugboard.swift */,
 				0EC88B731CD0B31300A707BE /* Rotor.swift */,
@@ -324,6 +330,7 @@
 				0EF1F30A1CD2320F00B922C4 /* RotorSet.swift in Sources */,
 				0E13E3461CD00155004CEEC3 /* Connection.swift in Sources */,
 				0E265F4A1CCFCE7D002E3788 /* AppDelegate.swift in Sources */,
+				0ED720FD1D0D853E00F68CDF /* Enigma.swift in Sources */,
 				0EF1F3561CD4E20D00B922C4 /* RotorLoadable.swift in Sources */,
 				0EF1F34A1CD3D8C700B922C4 /* RotorBox.swift in Sources */,
 				0EF1F34E1CD3EE4D00B922C4 /* ReflectorType.swift in Sources */,
@@ -334,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ED720FF1D0D857300F68CDF /* EnigmaTests.swift in Sources */,
 				0E13E3441CCFFA71004CEEC3 /* XCTAssertThrows.swift in Sources */,
 				0E35FB891CCFD128001B10E0 /* PlugboardTests.swift in Sources */,
 				0EF1F3591CD4E2C200B922C4 /* MockRotorBox.swift in Sources */,
