@@ -62,7 +62,7 @@ struct Plugboard {
      Remove a connection.
      - parameter connection: The connection to be removed.
      */
-    mutating func destroyConnection(connection: Connection) {
+    mutating func removeConnection(connection: Connection) {
         if let index = connections.indexOf({ $0 == connection }) {
             connections.removeAtIndex(index)
         }

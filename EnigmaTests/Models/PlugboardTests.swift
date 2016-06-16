@@ -85,7 +85,7 @@ class PlugboardTests: XCTestCase {
         try! plugboard.createConnection(connection)
         XCTAssertEqual(plugboard.passthrough("A"), "B")
 
-        plugboard.destroyConnection(connection)
+        plugboard.removeConnection(connection)
 
         XCTAssertEqual("A", "A")
     }
