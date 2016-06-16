@@ -16,6 +16,7 @@
 		0E35FB891CCFD128001B10E0 /* PlugboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35FB881CCFD128001B10E0 /* PlugboardTests.swift */; };
 		0EC88B741CD0B31300A707BE /* Rotor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC88B731CD0B31300A707BE /* Rotor.swift */; };
 		0EC88B781CD0B35D00A707BE /* RotorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC88B771CD0B35D00A707BE /* RotorTests.swift */; };
+		0ECA5D751D13203300EE4729 /* String+stripUnwantedCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECA5D741D13203300EE4729 /* String+stripUnwantedCharacters.swift */; };
 		0ED720FD1D0D853E00F68CDF /* Enigma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED720FC1D0D853E00F68CDF /* Enigma.swift */; };
 		0ED720FF1D0D857300F68CDF /* EnigmaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED720FE1D0D857300F68CDF /* EnigmaTests.swift */; };
 		0EE0F3B51D108E7D00353B04 /* Character+alphabetIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE0F3B41D108E7D00353B04 /* Character+alphabetIndex.swift */; };
@@ -54,6 +55,7 @@
 		0E35FB881CCFD128001B10E0 /* PlugboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlugboardTests.swift; sourceTree = "<group>"; };
 		0EC88B731CD0B31300A707BE /* Rotor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rotor.swift; sourceTree = "<group>"; };
 		0EC88B771CD0B35D00A707BE /* RotorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorTests.swift; sourceTree = "<group>"; };
+		0ECA5D741D13203300EE4729 /* String+stripUnwantedCharacters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+stripUnwantedCharacters.swift"; sourceTree = "<group>"; };
 		0ED720FC1D0D853E00F68CDF /* Enigma.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enigma.swift; sourceTree = "<group>"; };
 		0ED720FE1D0D857300F68CDF /* EnigmaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaTests.swift; sourceTree = "<group>"; };
 		0EE0F3B41D108E7D00353B04 /* Character+alphabetIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+alphabetIndex.swift"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				0EE0F3B41D108E7D00353B04 /* Character+alphabetIndex.swift */,
 				0E04B6911CD2117E00AE945B /* Character+unicodeScalarValue.swift */,
+				0ECA5D741D13203300EE4729 /* String+stripUnwantedCharacters.swift */,
 			);
 			name = Extensions;
 			path = ../Source/Extensions;
@@ -324,6 +327,7 @@
 				0EC88B741CD0B31300A707BE /* Rotor.swift in Sources */,
 				0E04B6921CD2117E00AE945B /* Character+unicodeScalarValue.swift in Sources */,
 				0E35FB851CCFD0D7001B10E0 /* Plugboard.swift in Sources */,
+				0ECA5D751D13203300EE4729 /* String+stripUnwantedCharacters.swift in Sources */,
 				0EF1F30A1CD2320F00B922C4 /* RotorSet.swift in Sources */,
 				0E265F4A1CCFCE7D002E3788 /* AppDelegate.swift in Sources */,
 				0ED720FD1D0D853E00F68CDF /* Enigma.swift in Sources */,
