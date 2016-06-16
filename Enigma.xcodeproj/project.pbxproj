@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0E04B6921CD2117E00AE945B /* Character+unicodeScalarValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E04B6911CD2117E00AE945B /* Character+unicodeScalarValue.swift */; };
 		0E13E3441CCFFA71004CEEC3 /* XCTAssertThrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E13E3431CCFFA71004CEEC3 /* XCTAssertThrows.swift */; };
-		0E13E3461CD00155004CEEC3 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E13E3451CD00155004CEEC3 /* Connection.swift */; };
 		0E265F4A1CCFCE7D002E3788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E265F491CCFCE7D002E3788 /* AppDelegate.swift */; };
 		0E265F511CCFCE7D002E3788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E265F501CCFCE7D002E3788 /* Assets.xcassets */; };
 		0E265F541CCFCE7D002E3788 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E265F521CCFCE7D002E3788 /* LaunchScreen.storyboard */; };
@@ -17,9 +16,10 @@
 		0E35FB891CCFD128001B10E0 /* PlugboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35FB881CCFD128001B10E0 /* PlugboardTests.swift */; };
 		0EC88B741CD0B31300A707BE /* Rotor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC88B731CD0B31300A707BE /* Rotor.swift */; };
 		0EC88B781CD0B35D00A707BE /* RotorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC88B771CD0B35D00A707BE /* RotorTests.swift */; };
-		0EE0F3B51D108E7D00353B04 /* Character+alphabetIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE0F3B41D108E7D00353B04 /* Character+alphabetIndex.swift */; };
+		0ECA5D751D13203300EE4729 /* String+stripUnwantedCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECA5D741D13203300EE4729 /* String+stripUnwantedCharacters.swift */; };
 		0ED720FD1D0D853E00F68CDF /* Enigma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED720FC1D0D853E00F68CDF /* Enigma.swift */; };
 		0ED720FF1D0D857300F68CDF /* EnigmaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED720FE1D0D857300F68CDF /* EnigmaTests.swift */; };
+		0EE0F3B51D108E7D00353B04 /* Character+alphabetIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE0F3B41D108E7D00353B04 /* Character+alphabetIndex.swift */; };
 		0EF1F30A1CD2320F00B922C4 /* RotorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3091CD2320F00B922C4 /* RotorSet.swift */; };
 		0EF1F30C1CD2325000B922C4 /* RotorSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F30B1CD2325000B922C4 /* RotorSetTests.swift */; };
 		0EF1F3111CD2455800B922C4 /* RotorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1F3101CD2455800B922C4 /* RotorType.swift */; };
@@ -44,7 +44,6 @@
 /* Begin PBXFileReference section */
 		0E04B6911CD2117E00AE945B /* Character+unicodeScalarValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+unicodeScalarValue.swift"; sourceTree = "<group>"; };
 		0E13E3431CCFFA71004CEEC3 /* XCTAssertThrows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTAssertThrows.swift; sourceTree = "<group>"; };
-		0E13E3451CD00155004CEEC3 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		0E265F461CCFCE7D002E3788 /* Enigma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enigma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E265F491CCFCE7D002E3788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E265F501CCFCE7D002E3788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,9 +55,10 @@
 		0E35FB881CCFD128001B10E0 /* PlugboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlugboardTests.swift; sourceTree = "<group>"; };
 		0EC88B731CD0B31300A707BE /* Rotor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rotor.swift; sourceTree = "<group>"; };
 		0EC88B771CD0B35D00A707BE /* RotorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorTests.swift; sourceTree = "<group>"; };
-		0EE0F3B41D108E7D00353B04 /* Character+alphabetIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+alphabetIndex.swift"; sourceTree = "<group>"; };
+		0ECA5D741D13203300EE4729 /* String+stripUnwantedCharacters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+stripUnwantedCharacters.swift"; sourceTree = "<group>"; };
 		0ED720FC1D0D853E00F68CDF /* Enigma.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enigma.swift; sourceTree = "<group>"; };
 		0ED720FE1D0D857300F68CDF /* EnigmaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnigmaTests.swift; sourceTree = "<group>"; };
+		0EE0F3B41D108E7D00353B04 /* Character+alphabetIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+alphabetIndex.swift"; sourceTree = "<group>"; };
 		0EF1F3091CD2320F00B922C4 /* RotorSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorSet.swift; sourceTree = "<group>"; };
 		0EF1F30B1CD2325000B922C4 /* RotorSetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorSetTests.swift; sourceTree = "<group>"; };
 		0EF1F3101CD2455800B922C4 /* RotorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotorType.swift; sourceTree = "<group>"; };
@@ -93,6 +93,7 @@
 			children = (
 				0EE0F3B41D108E7D00353B04 /* Character+alphabetIndex.swift */,
 				0E04B6911CD2117E00AE945B /* Character+unicodeScalarValue.swift */,
+				0ECA5D741D13203300EE4729 /* String+stripUnwantedCharacters.swift */,
 			);
 			name = Extensions;
 			path = ../Source/Extensions;
@@ -164,7 +165,6 @@
 		0E5F575B1CCFD0A100381BAE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0E13E3451CD00155004CEEC3 /* Connection.swift */,
 				0ED720FC1D0D853E00F68CDF /* Enigma.swift */,
 				0EF1F30F1CD2453400B922C4 /* Enums */,
 				0E35FB841CCFD0D7001B10E0 /* Plugboard.swift */,
@@ -327,8 +327,8 @@
 				0EC88B741CD0B31300A707BE /* Rotor.swift in Sources */,
 				0E04B6921CD2117E00AE945B /* Character+unicodeScalarValue.swift in Sources */,
 				0E35FB851CCFD0D7001B10E0 /* Plugboard.swift in Sources */,
+				0ECA5D751D13203300EE4729 /* String+stripUnwantedCharacters.swift in Sources */,
 				0EF1F30A1CD2320F00B922C4 /* RotorSet.swift in Sources */,
-				0E13E3461CD00155004CEEC3 /* Connection.swift in Sources */,
 				0E265F4A1CCFCE7D002E3788 /* AppDelegate.swift in Sources */,
 				0ED720FD1D0D853E00F68CDF /* Enigma.swift in Sources */,
 				0EF1F3561CD4E20D00B922C4 /* RotorLoadable.swift in Sources */,

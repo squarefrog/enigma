@@ -1,13 +1,5 @@
 import Foundation
 
-
-extension String {
-    func stripUnwantedCharacters() -> String {
-        let allowed: Set<Character> = Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters)
-        return String(self.uppercaseString.characters.filter { allowed.contains($0) })
-    }
-}
-
 /**
  Thrown when the `Plugboard` was unable to create a connection.
 
@@ -21,6 +13,9 @@ enum PlugboardError: ErrorType {
     case InvalidConnection
     case UnevenConnections
 }
+
+/// A tuple representation of a plugboard connection.
+typealias Connection = (Character, Character)
 
 /**
  * A representation of the plugboard or *Steckerbrett*.
@@ -54,8 +49,8 @@ struct Plugboard {
         }
 
         guard
-            connectionForCharacter(connection.startPoint) == nil &&
-            connectionForCharacter(connection.endPoint) == nil
+            connectionForCharacter(connection.0) == nil &&
+            connectionForCharacter(connection.1) == nil
             else {
                 throw PlugboardError.InvalidConnection
         }
@@ -67,7 +62,7 @@ struct Plugboard {
      Remove a connection.
      - parameter connection: The connection to be removed.
      */
-    mutating func destroyConnection(connection: Connection) {
+    mutating func removeConnection(connection: Connection) {
         if let index = connections.indexOf({ $0 == connection }) {
             connections.removeAtIndex(index)
         }
@@ -98,20 +93,19 @@ struct Plugboard {
 
     private func transformCharacter(character: Character,
                                     connection: Connection) -> Character {
-        if connection.startPoint == character {
-            return connection.endPoint
+        switch connection {
+        case let (a, b) where a == character:
+            return b
+        case let (a, b) where b == character:
+            return a
+        default:
+            return character
         }
-
-        if connection.endPoint == character {
-            return connection.startPoint
-        }
-
-        return character
     }
 
     private func connectionForCharacter(character: Character) -> Connection? {
         let filteredConnections = connections.filter { (c) -> Bool in
-            return c.startPoint == character || c.endPoint == character
+            return c.0 == character || c.1 == character
         }
 
         return filteredConnections.first

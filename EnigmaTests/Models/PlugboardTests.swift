@@ -25,7 +25,7 @@ class PlugboardTests: XCTestCase {
     }
 
     func test_ShouldUseAConnection() {
-        let connection = Connection(startPoint: "A", endPoint: "U")
+        let connection = Connection("A", "U")
         try! plugboard.createConnection(connection)
 
         let output = plugboard.passthrough("A")
@@ -34,7 +34,7 @@ class PlugboardTests: XCTestCase {
     }
 
     func test_ShouldUseConnectionInReverse() {
-        let connection = Connection(startPoint: "A", endPoint: "U")
+        let connection = Connection("A", "U")
         try! plugboard.createConnection(connection)
 
         let output = plugboard.passthrough("U")
@@ -44,23 +44,23 @@ class PlugboardTests: XCTestCase {
 
     func test_ShouldHaveMaximumOfTenConnections() {
         let connections = [
-            Connection(startPoint: "A", endPoint: "B"),
-            Connection(startPoint: "C", endPoint: "D"),
-            Connection(startPoint: "E", endPoint: "F"),
-            Connection(startPoint: "G", endPoint: "H"),
-            Connection(startPoint: "I", endPoint: "J"),
-            Connection(startPoint: "K", endPoint: "L"),
-            Connection(startPoint: "M", endPoint: "N"),
-            Connection(startPoint: "O", endPoint: "P"),
-            Connection(startPoint: "Q", endPoint: "R"),
-            Connection(startPoint: "S", endPoint: "T")
+            Connection("A", "B"),
+            Connection("C", "D"),
+            Connection("E", "F"),
+            Connection("G", "H"),
+            Connection("I", "J"),
+            Connection("K", "L"),
+            Connection("M", "N"),
+            Connection("O", "P"),
+            Connection("Q", "R"),
+            Connection("S", "T")
         ]
 
         for connection in connections {
             try! plugboard.createConnection(connection)
         }
 
-        let connection = Connection(startPoint: "U", endPoint: "V")
+        let connection = Connection("U", "V")
 
         XCTAssertThrowsSpecificError(PlugboardError.OutOfConnections) {
             [unowned self] in
@@ -69,10 +69,10 @@ class PlugboardTests: XCTestCase {
     }
 
     func test_ShouldNotAllowConnectionToExistingConnection() {
-        let connection = Connection(startPoint: "A", endPoint: "B")
+        let connection = Connection("A", "B")
         try! plugboard.createConnection(connection)
 
-        let newConnection = Connection(startPoint: "A", endPoint: "Z")
+        let newConnection = Connection("A", "Z")
 
         XCTAssertThrowsSpecificError(PlugboardError.InvalidConnection) {
             [unowned self]  in
@@ -81,11 +81,11 @@ class PlugboardTests: XCTestCase {
     }
 
     func test_ShouldAllowDestroyingConnection() {
-        let connection = Connection(startPoint: "A", endPoint: "B")
+        let connection = Connection("A", "B")
         try! plugboard.createConnection(connection)
         XCTAssertEqual(plugboard.passthrough("A"), "B")
 
-        plugboard.destroyConnection(connection)
+        plugboard.removeConnection(connection)
 
         XCTAssertEqual("A", "A")
     }
@@ -95,11 +95,8 @@ class PlugboardTests: XCTestCase {
 
         try! plugboard.createConnectionsWithString(string)
 
-        let expected = [
-            Connection(startPoint: "A", endPoint: "Z"),
-            Connection(startPoint: "B", endPoint: "Y")
-        ]
-        XCTAssertEqual(plugboard.connections, expected)
+        let expected: [Connection] = [ Connection("A", "Z"), Connection("B", "Y") ]
+        AssertEqualConnections(plugboard.connections, expected)
     }
 
     func test_ShouldRaiseWhenGivenUnevenPairString() {
@@ -116,9 +113,16 @@ class PlugboardTests: XCTestCase {
 
         try! plugboard.createConnectionsWithString(string)
 
-        let expected = [
-            Connection(startPoint: "A", endPoint: "Z")
-        ]
-        XCTAssertEqual(plugboard.connections, expected)
+        AssertEqualConnections(plugboard.connections, [Connection("A", "Z")])
+    }
+
+    // MARK: - Private Test Helpers
+
+    private func AssertEqualConnections(expression1: [Connection],
+                                _ expression2: [Connection],
+                                  file: StaticString = #file,
+                                  line: UInt = #line) {
+        let isEqual = expression1.elementsEqual(expression2, isEquivalent: ==)
+        XCTAssertTrue(isEqual, "connections are not equal", file: file, line: line)
     }
 }
