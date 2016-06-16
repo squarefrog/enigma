@@ -31,8 +31,8 @@ struct Plugboard {
      - returns: The transformed character.
      */
     func passthrough(input: Character) -> Character {
-        if let connection = connectionForCharacter(input) {
-            return transformCharacter(input, connection: connection)
+        if let connection = findConnection(forCharacter: input) {
+            return transform(input, connection: connection)
         }
 
         return input
@@ -43,14 +43,14 @@ struct Plugboard {
      - parameter connection: The connection to create.
      - throws: A PlugboardError if connection cannot be made
      */
-    mutating func createConnection(connection: Connection) throws {
+    mutating func create(connection: Connection) throws {
         guard connections.count < 10 else {
             throw PlugboardError.OutOfConnections
         }
 
         guard
-            connectionForCharacter(connection.0) == nil &&
-            connectionForCharacter(connection.1) == nil
+            findConnection(forCharacter: connection.0) == nil &&
+            findConnection(forCharacter: connection.1) == nil
             else {
                 throw PlugboardError.InvalidConnection
         }
@@ -62,7 +62,7 @@ struct Plugboard {
      Remove a connection.
      - parameter connection: The connection to be removed.
      */
-    mutating func removeConnection(connection: Connection) {
+    mutating func remove(connection: Connection) {
         if let index = connections.indexOf({ $0 == connection }) {
             connections.removeAtIndex(index)
         }
@@ -74,7 +74,7 @@ struct Plugboard {
      - throws: If connection cannot be created, or if the input string is
          uneven.
      */
-    mutating func createConnectionsWithString(connections: String) throws {
+    mutating func createConnections(withString connections: String) throws {
         let connections = connections.stripUnwantedCharacters()
         guard connections.characters.count % 2 == 0 else {
             throw PlugboardError.UnevenConnections
@@ -85,14 +85,13 @@ struct Plugboard {
         try 0.stride(to: count, by: 2).forEach {
             let a = connections[connections.startIndex.advancedBy($0)]
             let b = connections[connections.startIndex.advancedBy($0 + 1)]
-            try self.createConnection(Connection(startPoint: a, endPoint: b))
+            try self.create(Connection(startPoint: a, endPoint: b))
         }
     }
 
     // MARK: - Private API
 
-    private func transformCharacter(character: Character,
-                                    connection: Connection) -> Character {
+    private func transform(character: Character, connection: Connection) -> Character {
         switch connection {
         case let (a, b) where a == character:
             return b
@@ -103,7 +102,7 @@ struct Plugboard {
         }
     }
 
-    private func connectionForCharacter(character: Character) -> Connection? {
+    private func findConnection(forCharacter character: Character) -> Connection? {
         let filteredConnections = connections.filter { (c) -> Bool in
             return c.0 == character || c.1 == character
         }

@@ -45,7 +45,7 @@ class EnigmaTests: XCTestCase {
 
     func setupPlugboard() -> Plugboard {
         var plugboard = Plugboard()
-        try! plugboard.createConnectionsWithString("DNGRISKCQXTMPVHYFWBJ")
+        try! plugboard.createConnections(withString: "DNGRISKCQXTMPVHYFWBJ")
         return plugboard
     }
 }

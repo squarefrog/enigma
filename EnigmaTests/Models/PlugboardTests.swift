@@ -26,7 +26,7 @@ class PlugboardTests: XCTestCase {
 
     func test_ShouldUseAConnection() {
         let connection = Connection("A", "U")
-        try! plugboard.createConnection(connection)
+        try! plugboard.create(connection)
 
         let output = plugboard.passthrough("A")
 
@@ -35,7 +35,7 @@ class PlugboardTests: XCTestCase {
 
     func test_ShouldUseConnectionInReverse() {
         let connection = Connection("A", "U")
-        try! plugboard.createConnection(connection)
+        try! plugboard.create(connection)
 
         let output = plugboard.passthrough("U")
 
@@ -57,43 +57,43 @@ class PlugboardTests: XCTestCase {
         ]
 
         for connection in connections {
-            try! plugboard.createConnection(connection)
+            try! plugboard.create(connection)
         }
 
         let connection = Connection("U", "V")
 
         XCTAssertThrowsSpecificError(PlugboardError.OutOfConnections) {
             [unowned self] in
-            try self.plugboard.createConnection(connection)
+            try self.plugboard.create(connection)
         }
     }
 
     func test_ShouldNotAllowConnectionToExistingConnection() {
         let connection = Connection("A", "B")
-        try! plugboard.createConnection(connection)
+        try! plugboard.create(connection)
 
         let newConnection = Connection("A", "Z")
 
         XCTAssertThrowsSpecificError(PlugboardError.InvalidConnection) {
             [unowned self]  in
-            try self.plugboard.createConnection(newConnection)
+            try self.plugboard.create(newConnection)
         }
     }
 
     func test_ShouldAllowDestroyingConnection() {
         let connection = Connection("A", "B")
-        try! plugboard.createConnection(connection)
+        try! plugboard.create(connection)
         XCTAssertEqual(plugboard.passthrough("A"), "B")
 
-        plugboard.removeConnection(connection)
+        plugboard.remove(connection)
 
         XCTAssertEqual("A", "A")
     }
 
-    func test_ShouldCreateConnectionsFromString() {
+    func test_ShouldcreatesFromString() {
         let string = "AZBY"
 
-        try! plugboard.createConnectionsWithString(string)
+        try! plugboard.createConnections(withString: string)
 
         let expected: [Connection] = [ Connection("A", "Z"), Connection("B", "Y") ]
         AssertEqualConnections(plugboard.connections, expected)
@@ -104,14 +104,14 @@ class PlugboardTests: XCTestCase {
 
         XCTAssertThrowsSpecificError(PlugboardError.UnevenConnections) {
             [unowned self]  in
-            try self.plugboard.createConnectionsWithString(pairs)
+            try self.plugboard.createConnections(withString: pairs)
         }
     }
 
-    func test_ShouldCreateConnectionsFromACleansedString() {
+    func test_ShouldcreatesFromACleansedString() {
         let string = ".A z=-34"
 
-        try! plugboard.createConnectionsWithString(string)
+        try! plugboard.createConnections(withString: string)
 
         AssertEqualConnections(plugboard.connections, [Connection("A", "Z")])
     }
