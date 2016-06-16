@@ -16,7 +16,7 @@ class RotorBoxTests: XCTestCase {
     }
 
     func test_ShouldCreateRotorOfTypeI() {
-        let rotor = dataLoader.loadRotorOfType(.I)
+        let rotor = dataLoader.loadRotor(ofType: .I)
         XCTAssertEqual(rotor.mapping, "EKMFLGDQVZNTOWYHXUSPAIBRCJ")
 
         let notches = [Character("Q").alphabetIndex]
@@ -24,7 +24,7 @@ class RotorBoxTests: XCTestCase {
     }
 
     func test_ShouldCreateRotorOfTypeII() {
-        let rotor = dataLoader.loadRotorOfType(.II)
+        let rotor = dataLoader.loadRotor(ofType: .II)
         XCTAssertEqual(rotor.mapping, "AJDKSIRUXBLHWTMCQGZNPYFVOE")
 
         let notches = [Character("E").alphabetIndex]
@@ -32,7 +32,7 @@ class RotorBoxTests: XCTestCase {
     }
 
     func test_ShouldCreateRotorOfTypeIII() {
-        let rotor = dataLoader.loadRotorOfType(.III)
+        let rotor = dataLoader.loadRotor(ofType: .III)
         XCTAssertEqual(rotor.mapping, "BDFHJLCPRTXVZNYEIWGAKMUSQO")
 
         let notches = [Character("V").alphabetIndex]
@@ -40,7 +40,7 @@ class RotorBoxTests: XCTestCase {
     }
 
     func test_ShouldCreateRotorOfTypeIV() {
-        let rotor = dataLoader.loadRotorOfType(.IV)
+        let rotor = dataLoader.loadRotor(ofType: .IV)
         XCTAssertEqual(rotor.mapping, "ESOVPZJAYQUIRHXLNFTGKDCMWB")
 
         let notches = [Character("J").alphabetIndex]
@@ -48,7 +48,7 @@ class RotorBoxTests: XCTestCase {
     }
 
     func test_ShouldCreateRotorOfTypeV() {
-        let rotor = dataLoader.loadRotorOfType(.V)
+        let rotor = dataLoader.loadRotor(ofType: .V)
         XCTAssertEqual(rotor.mapping, "VZBRGITYUPSDNHLXAWMJQOFECK")
 
         let notches = [Character("Z").alphabetIndex]
@@ -56,7 +56,7 @@ class RotorBoxTests: XCTestCase {
     }
 
     func test_ShouldCreateRotorOfTypeVI() {
-        let rotor = dataLoader.loadRotorOfType(.VI)
+        let rotor = dataLoader.loadRotor(ofType: .VI)
         XCTAssertEqual(rotor.mapping, "JPGVOUMFYQBENHZRDKASXLICTW")
 
         let notches = [Character("Z").alphabetIndex, Character("M").alphabetIndex]
@@ -64,7 +64,7 @@ class RotorBoxTests: XCTestCase {
     }
 
     func test_ShouldCreateRotorOfTypeVII() {
-        let rotor = dataLoader.loadRotorOfType(.VII)
+        let rotor = dataLoader.loadRotor(ofType: .VII)
         XCTAssertEqual(rotor.mapping, "NZJHGRCXMYSWBOUFAIVLPEKQDT")
 
         let notches = [Character("Z").alphabetIndex, Character("M").alphabetIndex]
@@ -72,7 +72,7 @@ class RotorBoxTests: XCTestCase {
     }
 
     func test_ShouldCreateRotorOfTypeVIII() {
-        let rotor = dataLoader.loadRotorOfType(.VIII)
+        let rotor = dataLoader.loadRotor(ofType: .VIII)
         XCTAssertEqual(rotor.mapping, "FKQHTLXOCBJSPDZRAMEWNIUYGV")
 
         let notches = [Character("Z").alphabetIndex, Character("M").alphabetIndex]
@@ -80,42 +80,42 @@ class RotorBoxTests: XCTestCase {
     }
 
     func test_ShouldCreateRotorOfTypeBeta() {
-        let rotor = dataLoader.loadRotorOfType(.Beta)
+        let rotor = dataLoader.loadRotor(ofType: .Beta)
 
         XCTAssertEqual(rotor.mapping, "LEYJVCNIXWPBQMDRTAKZGFUHOS")
         XCTAssertEqual(rotor.turnoverNotches, [])
     }
 
     func test_ShouldCreateRotorOfTypeGamma() {
-        let rotor = dataLoader.loadRotorOfType(.Gamma)
+        let rotor = dataLoader.loadRotor(ofType: .Gamma)
 
         XCTAssertEqual(rotor.mapping, "FSOKANUERHMBTIYCWLQPZXVGJD")
         XCTAssertEqual(rotor.turnoverNotches, [])
     }
 
     func test_ShouldCreateReflectorOfTypeB() {
-        let rotor = dataLoader.loadReflectorOfType(.B)
+        let rotor = dataLoader.loadReflector(ofType: .B)
 
         XCTAssertEqual(rotor.mapping, "YRUHQSLDPXNGOKMIEBFZCWVJAT")
         XCTAssertEqual(rotor.turnoverNotches, [])
     }
 
     func test_ShouldCreateReflectorOfTypeC() {
-        let rotor = dataLoader.loadReflectorOfType(.C)
+        let rotor = dataLoader.loadReflector(ofType: .C)
 
         XCTAssertEqual(rotor.mapping, "FVPJIAOYEDRZXWGCTKUQSBNMHL")
         XCTAssertEqual(rotor.turnoverNotches, [])
     }
 
     func test_ShouldCreateReflectorOfTypeBThin() {
-        let rotor = dataLoader.loadReflectorOfType(.ThinB)
+        let rotor = dataLoader.loadReflector(ofType: .ThinB)
 
         XCTAssertEqual(rotor.mapping, "ENKQAUYWJICOPBLMDXZVFTHRGS")
         XCTAssertEqual(rotor.turnoverNotches, [])
     }
 
     func test_ShouldCreateReflectorOfTypeCThin() {
-        let rotor = dataLoader.loadReflectorOfType(.ThinC)
+        let rotor = dataLoader.loadReflector(ofType: .ThinC)
 
         XCTAssertEqual(rotor.mapping, "RDOBJNTKVEHMLFCWZAXGYIPSUQ")
         XCTAssertEqual(rotor.turnoverNotches, [])

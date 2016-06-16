@@ -6,7 +6,7 @@ import Foundation
 struct RotorBox: RotorLoadable {
 
     // swiftlint:disable function_body_length
-    func loadRotorOfType(type: RotorType) -> Rotor {
+    func loadRotor(ofType type: RotorType) -> Rotor {
         switch type {
         case .I:
             return Rotor(mapping: "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
@@ -51,7 +51,7 @@ struct RotorBox: RotorLoadable {
         }
     }
 
-    func loadReflectorOfType(type: ReflectorType) -> Rotor {
+    func loadReflector(ofType type: ReflectorType) -> Rotor {
         switch type {
         case .B:
             return Rotor(mapping: "YRUHQSLDPXNGOKMIEBFZCWVJAT",

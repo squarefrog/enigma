@@ -35,7 +35,7 @@ struct RotorSet {
      - throws: RotorSetError if unable to load rotor.
      */
     mutating func loadRotorType(type: RotorType, position: RotorPosition) throws {
-        let rotor = rotorBox.loadRotorOfType(type)
+        let rotor = rotorBox.loadRotor(ofType: type)
 
         for loadedRotor in [firstRotor, secondRotor, thirdRotor, fourthRotor] {
             if rotor == loadedRotor {
@@ -57,7 +57,7 @@ struct RotorSet {
      - parameter type: The reflector type to load.
      */
     mutating func loadReflectorType(type: ReflectorType) {
-        reflector = rotorBox.loadReflectorOfType(type)
+        reflector = rotorBox.loadReflector(ofType: type)
     }
 
     /**
