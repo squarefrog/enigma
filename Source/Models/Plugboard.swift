@@ -22,6 +22,9 @@ enum PlugboardError: ErrorType {
     case UnevenConnections
 }
 
+/// A tuple representation of a plugboard connection.
+typealias Connection = (Character, Character)
+
 /**
  * A representation of the plugboard or *Steckerbrett*.
  */
@@ -54,8 +57,8 @@ struct Plugboard {
         }
 
         guard
-            connectionForCharacter(connection.startPoint) == nil &&
-            connectionForCharacter(connection.endPoint) == nil
+            connectionForCharacter(connection.0) == nil &&
+            connectionForCharacter(connection.1) == nil
             else {
                 throw PlugboardError.InvalidConnection
         }
@@ -98,12 +101,12 @@ struct Plugboard {
 
     private func transformCharacter(character: Character,
                                     connection: Connection) -> Character {
-        if connection.startPoint == character {
-            return connection.endPoint
+        if connection.0 == character {
+            return connection.1
         }
 
-        if connection.endPoint == character {
-            return connection.startPoint
+        if connection.1 == character {
+            return connection.0
         }
 
         return character
@@ -111,7 +114,7 @@ struct Plugboard {
 
     private func connectionForCharacter(character: Character) -> Connection? {
         let filteredConnections = connections.filter { (c) -> Bool in
-            return c.startPoint == character || c.endPoint == character
+            return c.0 == character || c.1 == character
         }
 
         return filteredConnections.first
