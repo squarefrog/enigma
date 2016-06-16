@@ -93,15 +93,14 @@ struct Plugboard {
 
     private func transformCharacter(character: Character,
                                     connection: Connection) -> Character {
-        if connection.0 == character {
-            return connection.1
+        switch connection {
+        case let (a, b) where a == character:
+            return b
+        case let (a, b) where b == character:
+            return a
+        default:
+            return character
         }
-
-        if connection.1 == character {
-            return connection.0
-        }
-
-        return character
     }
 
     private func connectionForCharacter(character: Character) -> Connection? {
